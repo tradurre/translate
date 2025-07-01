@@ -1,0 +1,8 @@
+﻿// System Warning Range: 0000-9999
+// Note: All warnings should be known.
+
+// General / System Warnings (0000 - 0100)
+
+Not Supported = 0001
+
+Not Implemented = 9999

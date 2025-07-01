@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tradurre", "Tradurre\Tradurre.csproj", "{93F426C4-E914-7C53-31AB-E5BA4196CD10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "translate", "translate\translate.csproj", "{6C26366F-23D3-D5F6-8CFA-DF36D5C918F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93F426C4-E914-7C53-31AB-E5BA4196CD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F426C4-E914-7C53-31AB-E5BA4196CD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F426C4-E914-7C53-31AB-E5BA4196CD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F426C4-E914-7C53-31AB-E5BA4196CD10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C26366F-23D3-D5F6-8CFA-DF36D5C918F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C26366F-23D3-D5F6-8CFA-DF36D5C918F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C26366F-23D3-D5F6-8CFA-DF36D5C918F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C26366F-23D3-D5F6-8CFA-DF36D5C918F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

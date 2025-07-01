@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tradurre.DataType">
+    <Position X="34.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.DataTypePrecision">
+    <Position X="26" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DataTypePrecision.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.DataTypePrecisionAndScale">
+    <Position X="46.5" Y="2.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DataTypePrecisionAndScale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.CharacterDataType">
+    <Position X="10.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\CharacterDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.CharacterLargeObjectDataType">
+    <Position X="13.5" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\CharacterLargeObjectDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.CharacterVaryingDataType">
+    <Position X="17.5" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\CharacterVaryingDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.DateDataType">
+    <Position X="51.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DateDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.DecimalDataType">
+    <Position X="45.25" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DecimalDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.DoublePrecsionDataType">
+    <Position X="21.25" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\DoublePrecsionDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.FloatDataType">
+    <Position X="25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\FloatDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.IntegerDataType">
+    <Position X="54.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\IntegerDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.IntervalDataType">
+    <Position X="28" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgAA=</HashCode>
+      <FileName>EntityModel\DataTypes\IntervalDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.NationalCharacterDataType">
+    <Position X="31.25" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\NationalCharacterDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.NationalCharacterVaryingDataType">
+    <Position X="35" Y="5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\NationalCharacterVaryingDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.NumericDataType">
+    <Position X="48.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\NumericDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.RealDataType">
+    <Position X="39.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\RealDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.SmallIntegerDataType">
+    <Position X="58" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\SmallIntegerDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.TimeDataType">
+    <Position X="42.25" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\TimeDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.TimestampDataType">
+    <Position X="61.5" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>EntityModel\DataTypes\TimestampDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tradurre.BigIntegerDataType">
+    <Position X="7" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\BigIntegerDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Tradurre.IntervalType" Collapsed="true">
+    <Position X="65.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJAAAAAAAAAAAAAIAAAAAACIEAAAAAAAAAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\IntervalType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Tradurre.TimeZoneFlag" Collapsed="true">
+    <Position X="67" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAgACAAA=</HashCode>
+      <FileName>EntityModel\DataTypes\TimeZoneFlag.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
