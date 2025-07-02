@@ -31,7 +31,7 @@ public sealed class Translator : ITranslator
         _logger.TraceEntry();
 
         // Get the parser
-        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new InvalidOperationException();
+        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException();
 
         return parser.Parse(statement);
     }
