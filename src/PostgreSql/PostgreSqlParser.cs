@@ -28,6 +28,8 @@ public class PostgreSqlParser : IParser
 
         ParseResult result = new();
 
+        throw new NotImplementedException();
+
         return result;
     }
 }
