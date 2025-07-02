@@ -4,6 +4,7 @@
 
 using CliFx;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.SqlServer;
 using Serilog;
 using Tradurre.Commands;
 using Tradurre.Themes;
@@ -42,11 +43,11 @@ public static class Program
                 .AddSingleton<ITranslator, Translator>()
 
                 // Parser Extensions
-                // TODO: .AddKeyedSingleton<IParser, Microsoft.SqlServer.SqlServerParser>(SourceType.MicrosoftSqlServer)
+                .AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
                 // TODO: .AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
 
                 // Writer Extensions
-                // TODO: .AddKeyedSingleton<IWriter, Microsoft.SqlServer.SqlServerWriter>(TargetType.MicrosoftSqlServer)
+                .AddKeyedSingleton<IWriter, SqlServerWriter>(TargetType.MicrosoftSqlServer)
                 // TODO: .AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
 
                 .BuildServiceProvider();
