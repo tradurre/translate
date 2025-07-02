@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.SqlServer\Microsoft.SqlServer.csproj" />
+    <ProjectReference Include="..\PostgreSql\PostgreSql.csproj" />
     <ProjectReference Include="..\Tradurre\Tradurre.csproj" />
   </ItemGroup>
 

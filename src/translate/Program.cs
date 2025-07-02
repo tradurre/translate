@@ -44,11 +44,11 @@ public static class Program
 
                 // Parser Extensions
                 .AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
-                // TODO: .AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
+                .AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
 
                 // Writer Extensions
                 .AddKeyedSingleton<IWriter, SqlServerWriter>(TargetType.MicrosoftSqlServer)
-                // TODO: .AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
+                .AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
 
                 .BuildServiceProvider();
 
