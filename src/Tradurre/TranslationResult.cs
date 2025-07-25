@@ -24,10 +24,42 @@ public sealed class TranslationResult
     /// <summary>
     /// Gets any validation or parsing errors associated with this operation.
     /// </summary>
-    public Dictionary<string, string> Errors { get; } = new(StringComparer.Ordinal);
+    public List<Error> Errors { get; } = [];
 
     /// <summary>
     /// Gets any validation or parsing warnings associated with this operation.
     /// </summary>
-    public Dictionary<string, string> Warnings { get; } = new(StringComparer.Ordinal);
+    public List<Warning> Warnings { get; } = [];
+
+    /// <summary>
+    /// Adds the <see cref="ParseResult"/> <see cref="ParseResult.Errors"/> and <see cref="ParseResult.Warnings"/> to the current result.
+    /// </summary>
+    /// <param name="result">The <see cref="ParseResult"/> to evaluate.</param>
+    internal void Add(ParseResult result)
+    {
+        if (result == null)
+            return;
+
+        if (result.Errors.Count > 0)
+            Errors.AddRange(result.Errors);
+
+        if (result.Warnings.Count > 0)
+            Warnings.AddRange(result.Warnings);
+    }
+
+    /// <summary>
+    /// Adds the <see cref="WriteResult"/> <see cref="WriteResult.Errors"/> and <see cref="WriteResult.Warnings"/> to the current result.
+    /// </summary>
+    /// <param name="result">The <see cref="WriteResult"/> to evaluate.</param>
+    internal void Add(WriteResult result)
+    {
+        if (result == null)
+            return;
+
+        if (result.Errors.Count > 0)
+            Errors.AddRange(result.Errors);
+
+        if (result.Warnings.Count > 0)
+            Warnings.AddRange(result.Warnings);
+    }
 }

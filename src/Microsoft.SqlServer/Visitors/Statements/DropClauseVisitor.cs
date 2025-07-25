@@ -26,10 +26,10 @@ internal sealed class DropClauseVisitor : SqlVisitor<Statement>
     public override Statement VisitDrop_clause(Drop_clauseContext context)
     {
         Logger.NestStart();
-        ArgumentNullException.ThrowIfNull(context, nameof(context));        
+        ArgumentNullException.ThrowIfNull(context, nameof(context));
 
         Statement statement;
-        throw new NotImplementedException(context.Info().Value);
+        throw new NotImplementedException(context.Source().Value);
 
         Logger.NestEnd();
         return statement;

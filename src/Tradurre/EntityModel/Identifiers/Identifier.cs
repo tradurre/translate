@@ -31,14 +31,9 @@ public class Identifier : Fragment
     }
 
     /// <summary>
-    /// Gets or sets a child <see cref="Identifier"/>.
-    /// </summary>
-    public Identifier? Child { get; set; }
-
-    /// <summary>
     /// Gets or sets a flag that indicates if the <see cref="Identifier"/> is quoted.
     /// </summary>
-    public bool? IsQuoted { get; set; }
+    public bool IsQuoted { get; set; } = false;
 
     /// <summary>
     /// Gets or sets the value of the <see cref="Identifier"/>.

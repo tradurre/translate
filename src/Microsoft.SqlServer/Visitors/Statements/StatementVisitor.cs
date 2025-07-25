@@ -26,7 +26,7 @@ internal sealed class StatementVisitor : SqlVisitor<Statement>
     public override Statement VisitStatement(StatementContext context)
     {
         Logger.NestStart();
-        ArgumentNullException.ThrowIfNull(context, nameof(context));        
+        ArgumentNullException.ThrowIfNull(context, nameof(context));
 
         Statement statement;
 
@@ -34,7 +34,7 @@ internal sealed class StatementVisitor : SqlVisitor<Statement>
             statement = Visit(Logger, context.ddl_clause());
 
         else
-            throw new NotImplementedException(context.Info().Value);
+            throw new NotImplementedException(context.Source().Value);
 
         Logger.NestEnd();
         return statement;

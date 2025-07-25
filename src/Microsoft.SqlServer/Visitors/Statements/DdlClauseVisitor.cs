@@ -26,7 +26,7 @@ internal sealed class DdlClauseVisitor : SqlVisitor<Statement>
     public override Statement VisitDdl_clause(Ddl_clauseContext context)
     {
         Logger.NestStart();
-        ArgumentNullException.ThrowIfNull(context, nameof(context));        
+        ArgumentNullException.ThrowIfNull(context, nameof(context));
 
         Statement statement;
 
@@ -34,7 +34,7 @@ internal sealed class DdlClauseVisitor : SqlVisitor<Statement>
             statement = Visit(Logger, context.drop_clause());
 
         else
-            throw new NotImplementedException(context.Info().Value);
+            throw new NotImplementedException(context.Source().Value);
 
         Logger.NestEnd();
         return statement;

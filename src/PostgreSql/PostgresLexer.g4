@@ -865,6 +865,31 @@ YES : 'YES' ;
 
 ZONE : 'ZONE' ;
 
+EQ : '=' ;
+NEQ : '<>' | '!=' ;
+GT : '>' ;
+GTE : '>=' ;
+NGT : '!>' ;
+LT : '<' ;
+LTE : '<=' ;
+NLT : '!<' ;
+
+AMPERSAND : '&' ;
+AMPERSAND_EQUALS : '&=' ;
+ASTERISK : '*' ;
+BRACKET_L : '[' ;
+BRACKET_R : ']' ;
+COLON : ':' ;
+COMMA : ',' ;
+MINUS : '-' ;
+PAREN_L : '(' ;
+PAREN_R : ')' ;
+PARENS : '()' ;
+PERCENT_ : '%' ;
+PERIOD_ : '.' ;
+PLUS : '+' ;
+SEMICOLON : ';' ;
+SLASH : '/' ;
 
 WHITE_SPACE : [ \r\n\t]+ -> channel(whitespace) ;
 

@@ -17,9 +17,35 @@ public static class ParserRuleContextExtensions
     /// </summary>
     /// <param name="context">The <see cref="ParserRuleContext"/>.</param>
     /// <returns>A <see cref="Source"/>.</returns>
-    public static Source Info(this ParserRuleContext context)
+    public static Source Source(this ParserRuleContext context)
     {
         return new(context.StartLine(), context.PrettyPrint());
+    }
+
+    /// <summary>
+    /// Returns a flag that indicates if the <see cref="ParserRuleContext"/> is not null.
+    /// </summary>
+    /// <param name="context">The <see cref="ParserRuleContextParserRuleContext"/> to examine.</param>
+    /// <returns>A flag that indicates if the <see cref="RuleContext"/> is not null.</returns>
+    public static bool IsNotEmpty(this ParserRuleContext context)
+    {
+        if (context != null)
+            return true;
+        else
+            return false;
+    }
+
+    /// <summary>
+    /// Returns a flag that indicates if the <see cref="RuleContext"/> is not null.
+    /// </summary>
+    /// <param name="context">The <see cref="RuleContext"/> to examine.</param>
+    /// <returns>A flag that indicates if the <see cref="RuleContext"/> is not null.</returns>
+    public static bool IsNotEmpty(this RuleContext context)
+    {
+        if (context != null)
+            return true;
+        else
+            return false;
     }
 
     /// <summary>

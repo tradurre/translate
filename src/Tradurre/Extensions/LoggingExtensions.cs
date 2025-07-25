@@ -60,7 +60,7 @@ public static class LoggingExtensions
             }
         }
 
-        logger.LogTrace("Tree: {Tree}", string.Join($" > ", nests.ToArray()));
+        logger.LogDebug("Tree: {Tree}", string.Join($" > ", nests.ToArray()));
     }
 
     /// <summary>

@@ -1,18 +1,21 @@
-﻿// <copyright file="DropDatabaseOption.cs">
+﻿// <copyright file="DropSchemaOption.cs">
 // All rights reserved.
 // </copyright>
 
 namespace Tradurre;
 
 /// <summary>
-/// Options for a DROP DATABASE statement
+/// Options for a DROP SCHEMA statement
 /// </summary>
 /// <remarks>
-/// Snowflake: DROP DATABASE https://docs.snowflake.com/en/sql-reference/sql/drop-database
-/// <para>Specifies whether the database can be dropped if foreign keys exist that reference any tables in the database:</para>
+/// PostgreSQL : DROP SCHEMA https://www.postgresql.org/docs/current/sql-dropschema.html
 /// <list type="bullet">
-/// <item>CASCADE drops the database and all objects in the database, including tables with primary/unique keys that are referenced by foreign keys in other tables.</item>
-/// <item>RESTRICT returns a warning about existing foreign key references and does not drop the database.</item>
+/// <item>CASCADE
+/// <para>Automatically drop objects (tables, functions, etc.) that are contained in the schema, and in turn all objects that depend on those objects.</para>
+/// </item>
+/// <item>RESTRICT
+/// <para>Refuse to drop the schema if it contains any objects. This is the default.</para>
+/// </item>
 /// </list>
 ///
 /// IBM DB2: DROP DATABASE https://www.ibm.com/docs/en/db2/12.1.0?topic=commands-drop-database
@@ -23,10 +26,8 @@ namespace Tradurre;
 /// inconsistencies in the system, so it should only be used with caution.</para></item>
 /// </list>
 /// </remarks>
-public enum DropDatabaseOption
+public enum DropSchemaOption
 {
-    At_PartitionNumber,
-
     Cascade,
 
     Restrict

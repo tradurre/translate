@@ -10,7 +10,7 @@ namespace Tradurre;
 public abstract class DropStatement : Statement
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="DropStatement"/> class with the specified
+    /// Initializes a new instance of the <see cref="CreateStatement"/> class with the specified
     /// <see cref="Source"/>.
     /// </summary>
     /// <param name="source">The <see cref="Source"/> for the statement.</param>
