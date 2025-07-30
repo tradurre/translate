@@ -6,4 +6,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Antlr4 Include="DuckDBParser.g4">
+      <Package>DuckDB</Package>
+      <Listener>False</Listener>
+      <Visitor>True</Visitor>
+      <Error>True</Error>
+    </Antlr4>
+    <Antlr4 Include="DuckDBLexer.g4">
+      <Package>DuckDB</Package>
+      <Listener>False</Listener>
+      <Visitor>True</Visitor>
+      <Error>True</Error>
+    </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+    <PackageReference Include="Antlr4BuildTasks" Version="12.10.0" />
+  </ItemGroup>
+
 </Project>
