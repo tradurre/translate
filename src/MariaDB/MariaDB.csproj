@@ -6,4 +6,28 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Antlr4 Include="MariaDBParser.g4">
+      <Package>MariaDB</Package>
+      <Listener>False</Listener>
+      <Visitor>True</Visitor>
+      <Error>True</Error>
+    </Antlr4>
+    <Antlr4 Include="MariaDBLexer.g4">
+      <Package>MariaDB</Package>
+      <Listener>False</Listener>
+      <Visitor>True</Visitor>
+      <Error>True</Error>
+    </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+    <PackageReference Include="Antlr4BuildTasks" Version="12.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tradurre\Tradurre.csproj" />
+  </ItemGroup>
+
 </Project>

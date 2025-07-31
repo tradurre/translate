@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
   <ItemGroup>
     <Antlr4 Include="RedshiftParser.g4">
       <Package>Amazon.Redshift</Package>
@@ -25,6 +24,10 @@
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
     <PackageReference Include="Antlr4BuildTasks" Version="12.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tradurre\Tradurre.csproj" />
   </ItemGroup>
 
 </Project>
