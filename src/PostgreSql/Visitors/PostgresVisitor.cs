@@ -1,4 +1,4 @@
-﻿// <copyright file="PostgresVisitor{T}.cs>
+﻿// <copyright file="PostgresVisitor{T}.cs">
 // All rights reserved.
 // </copyright>
 

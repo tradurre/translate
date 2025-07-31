@@ -7,7 +7,7 @@ namespace Tradurre;
 /// <summary>
 /// Represents a DROP SQL statement with the IF EXISTS qualifer.
 /// </summary>
-public abstract class DropIfExistsStatement : DropStatement
+public abstract class DropIfExistsStatement : CreateStatement
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="DropIfExistsStatement"/> class with the specified

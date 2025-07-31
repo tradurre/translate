@@ -31,7 +31,7 @@ public sealed class Translator : ITranslator
         _logger.TraceEntry();
 
         // Get the parser
-        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException();
+        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException($"{source}");
 
         return parser.Parse(statement);
     }
@@ -44,19 +44,16 @@ public sealed class Translator : ITranslator
 
         TranslationResult result = new();
 
-        // Parse the statments into intermediate objects
-        var parse_result = Parse(source, statement);
+        // Get the parser
+        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException($"{source}");
 
-        // TODO: Add errors and warnings to the result
-
+        ParseResult parse_result = parser.Parse(statement);
+        result.Add(parse_result);
 
         // Get the writer
-        var writer = _provider.GetKeyedService<IWriter>(target) ?? throw new InvalidOperationException();
-        var write_result = writer.Write(parse_result.Statements.ToList<Fragment>());
-
-        // TODO: result.Statements.AddRange(write_result.Statements);
-
-        // TODO: Add errors and warnings to the result
+        var writer = _provider.GetKeyedService<IWriter>(target) ?? throw new WriterNotFoundException($"{target}");
+        var write_result = writer.Write([.. parse_result.Statements]);
+        result.Add(write_result);
 
         return result;
     }
@@ -65,4 +62,4 @@ public sealed class Translator : ITranslator
     /// Gets or sets the <see cref="ITokenStream"/> for the translator.
     /// </summary>
     public static BufferedTokenStream? Tokens { get; set; }
-} 
+}

@@ -38,4 +38,14 @@ public sealed class ParseResult
     /// </summary>
     public List<Warning> Warnings
     { get { return [.. Files.SelectMany(f => f.Warnings)]; } }
+
+    public void Add(ParseResult result)
+    {
+        if (result == null)
+            return;
+
+        Errors.AddRange(result.Errors);
+        Statements.AddRange(result.Statements);
+        Warnings.AddRange(result.Warnings);
+    }
 }

@@ -12,11 +12,11 @@ namespace Microsoft.SqlServer.Writers;
 internal partial class SqlWriter
 {
     /// <summary>
-    /// Writes the <see cref="DropStatement"/>.
+    /// Writes the <see cref="CreateStatement"/>.
     /// </summary>
-    /// <param name="fragment">The <see cref="DropStatement"/> to write.</param>
+    /// <param name="fragment">The <see cref="CreateStatement"/> to write.</param>
     /// <returns>A <see cref="WriteResult"/>.</returns>
-    public WriteResult Write(DropStatement fragment)
+    public WriteResult Write(CreateStatement fragment)
     {
         _logger.TraceEntry();
 

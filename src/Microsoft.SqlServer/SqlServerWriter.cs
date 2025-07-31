@@ -38,7 +38,7 @@ public partial class SqlServerWriter : IWriter
             //result.Statements.AddRange(temp_result.Statements);
             //result.Warnings.AddRange(temp_result.Warnings);            
         }
-        throw new NotImplementedException();
+
         return result;
     }
 }

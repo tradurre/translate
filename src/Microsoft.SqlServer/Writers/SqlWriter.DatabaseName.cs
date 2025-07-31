@@ -27,15 +27,14 @@ internal partial class SqlWriter
 
         StringBuilder sb = new();
 
-        if (Configuration.UseQuotedIdentifiers || 
-            ( fragment.IsQuoted is not null && (bool)fragment.IsQuoted))
+        if (Configuration.UseQuotedIdentifiers || fragment.IsQuoted)
             template = "[{0}]";
 
         sb.Append(string.Format(template, fragment.Value));
 
-        if (fragment.Child is not null)
-            result.Warnings.Add(new NotSupportedWarning("[database name]",
-                "Microsoft SQL Server does not support a [database name] with any child identifiers."));
+        //if (fragment.Child is not null)
+        //    result.Warnings.Add(new NotSupportedWarning("[database name]",
+        //        "Microsoft SQL Server does not support a [database name] with any child identifiers."));
 
         result.Statement = sb.ToString();
 
