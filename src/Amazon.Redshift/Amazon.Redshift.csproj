@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
   <ItemGroup>
     <Antlr4 Include="RedshiftParser.g4">
       <Package>Amazon.Redshift</Package>
