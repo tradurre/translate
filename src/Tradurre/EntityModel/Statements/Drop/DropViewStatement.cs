@@ -8,6 +8,7 @@ namespace Tradurre;
 /// Represents a DROP VIEW statement.
 /// </summary>
 /// <remarks>
+/// DuckDB: DROP VIEW https://duckdb.org/docs/stable/sql/statements/drop
 /// IBM DB2 12.1.0: DROP VIEW
 /// MariaDB: DROP VIEW
 /// MySql 9.3: DROP VIEW
@@ -39,7 +40,6 @@ public sealed class DropViewStatement : DropIfExistsStatement
         : base(source)
     {
         ArgumentNullException.ThrowIfNull(name, nameof(name));
-
         Names.Add(name);
     }
 
@@ -53,7 +53,6 @@ public sealed class DropViewStatement : DropIfExistsStatement
         : base(source)
     {
         ArgumentNullException.ThrowIfNull(source, nameof(source));
-
         Names.AddRange(names);
     }
 
@@ -68,7 +67,7 @@ public sealed class DropViewStatement : DropIfExistsStatement
     public List<ViewName> Names { get; } = [];
 
     /// <summary>
-    /// Gets a collection of options for the statement.
+    /// Gets os sets the <see cref="DropOption"/> for the statement.
     /// </summary>
-    public List<DropDatabaseOption> Options { get; } = [];
+    public DropOption Option { get; set; }
 }

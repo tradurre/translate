@@ -28,7 +28,7 @@ public static class Program
                     .WriteTo.Console(
                         formatProvider: null,
                         outputTemplate: "{Level}: {Message:lj}{NewLine}{Exception}",
-                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug,
+                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Verbose,
                         theme: ConsoleTheme.Translate
                         )
                     .CreateLogger();

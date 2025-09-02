@@ -1,4 +1,4 @@
-// <copyright file="DropSchemaVisitor.cs">
+// <copyright file="DropIndexVisitor.cs">
 // All rights reserved.
 // </copyright>
 
@@ -9,31 +9,29 @@ using static DuckDB.DuckDBParser;
 namespace DuckDB.Visitors;
 
 /// <summary>
-/// Handles the drop_schema rule.
+/// Handles the drop_index rule.
 /// </summary>
-internal sealed class DropSchemaVisitor : SqlVisitor<DropSchemaStatement>
+internal sealed class DropIndexVisitor : SqlVisitor<DropIndexStatement>
 {
     /// <summary>
-    /// Initlaizes a new instance of the <see cref="DropSchemaVisitor"/> class with the specified <see cref="ILogger"/>.
+    /// Initlaizes a new instance of the <see cref="DropIndexVisitor"/> class with the specified <see cref="ILogger"/>.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
-    public DropSchemaVisitor(ILogger logger)
+    public DropIndexVisitor(ILogger logger)
         : base(logger)
     {
         Logger.TraceEntry();
     }
 
     /// <inheritdoc/>
-    public override DropSchemaStatement VisitDrop_schema(Drop_schemaContext context)
+    public override DropIndexStatement VisitDrop_index(Drop_indexContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        var schema = Visit(context.schema_name());
-
-        DropSchemaStatement statement = new(
-            Visit(Logger, context.schema_name()),
+        DropIndexStatement statement = new(
+            Visit(Logger, context.index_name()),
             context.Source());
 
         if (context.if_exists() is not null)

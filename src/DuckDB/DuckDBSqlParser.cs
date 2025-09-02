@@ -4,6 +4,7 @@
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Atn;
+using DuckDB.Visitors;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Tradurre;
@@ -64,12 +65,15 @@ public class DuckDBSqlParser : IParser
                 }
             }
 
-            var context = parser.batch();
+            // Visit
+            BatchVisitor visitor = new(_logger);
+            var results = visitor.VisitBatch(parser.batch());
 
         }
         catch (Exception ex)
         {
             _logger.LogError("{Error}", ex);
+            // TODO: result.Errors.Add(new Error(ex.Message, ));
         }
 
         return result;

@@ -8,6 +8,7 @@ namespace Tradurre;
 /// Represents a DROP SCHEMA statement.
 /// </summary>
 /// <remarks>
+/// DuckDB: DROP SCHEMA https://duckdb.org/docs/stable/sql/statements/drop
 /// IBM DB2 12.1.0: DROP SCHEMA
 /// MariaDB: DROP SCHEMA
 /// MySql 9.3: DROP SCHEMA
@@ -68,7 +69,7 @@ public sealed class DropSchemaStatement : DropIfExistsStatement
     public List<SchemaName> Names { get; } = [];
 
     /// <summary>
-    /// Gets or sets the <see cref="DropSchemaOption"/> for the statement.
+    /// Gets or sets the <see cref="DropOption"/> for the statement.
     /// </summary>
-    public DropSchemaOption? Options { get; set; }
+    public DropOption? Option { get; set; }
 }

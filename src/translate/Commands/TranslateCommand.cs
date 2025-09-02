@@ -78,6 +78,8 @@ public class TranslateCommand : ICommand
 
         results.AddRange(Translate(Input));
 
+        Report(results);
+
         return default;
     }
 
@@ -99,8 +101,31 @@ public class TranslateCommand : ICommand
     private TranslationResult Translate(FileInfo file)
     {
         _logger.TraceEntry();
-
+        _logger.LogInformation("Translating: {FilePath}", file.FullName);
         string statements = File.ReadAllText(file.FullName);
         return Translator.Translate(Source, Target, statements);
+    }
+
+    private void Report(List<TranslationResult> results)
+    {
+        _logger.TraceEntry();
+
+        _logger.LogInformation("Statements: {Count}", results.Count);
+
+        foreach (var result in results)
+        {
+            _logger.LogDebug("Result: " +
+                "\r\n\tStatements: {Statements}" +
+                "\r\n\tErrors: {Errors}" +
+                "\r\n\tWarnings: {Warnings}",
+                result.Statements.Count,
+                result.Errors.Count,
+                result.Warnings.Count
+                );
+            //foreach(var statement in item.Statements)
+            //{
+            //    _logger.LogInformation("\tStatement: {Statement}", statement.Source);
+           // }
+        }
     }
 }

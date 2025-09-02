@@ -18,7 +18,7 @@ public sealed class ViewName : Identifier
     /// <summary>
     /// Initializes a new instance of the <see cref="ViewName"/> class with the specified name.
     /// </summary>
-    /// <param name="name">The name of the database.</param>
+    /// <param name="name">The name of the view.</param>
     /// <param name="source">The <see cref="Source"/> for the object.</param>
     public ViewName(string name, Source source)
         : base(name, source)

@@ -23,15 +23,15 @@ internal partial class SqlVisitor<T>
         return new DdlClauseVisitor(logger).VisitDdl_clause(context);
     }
 
-    /// <summary>
-    /// Visit the drop_clause rule.
-    /// </summary>
-    /// <param name="logger">An <see cref="ILogger"/>.</param>
-    /// <param name="context">The <see cref="Drop_clauseContext"/>.</param>
-    /// <returns>A <see cref="Statement"/>.</returns>
-    internal static Statement Visit(ILogger logger, Drop_clauseContext context)
-    {
-        logger.TraceEntry();
-        return new DropClauseVisitor(logger).VisitDrop_clause(context);
-    }
+    ///// <summary>
+    ///// Visit the drop_clause rule.
+    ///// </summary>
+    ///// <param name="logger">An <see cref="ILogger"/>.</param>
+    ///// <param name="context">The <see cref="Drop_clauseContext"/>.</param>
+    ///// <returns>A <see cref="Statement"/>.</returns>
+    //internal static Statement Visit(ILogger logger, Drop_clauseContext context)
+    //{
+    //    logger.TraceEntry();
+    //    return new DropClauseVisitor(logger).VisitDrop_clause(context);
+    //}
 }

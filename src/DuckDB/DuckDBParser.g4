@@ -40,10 +40,10 @@ drop_type : DROP TYPE if_exists?  type_name cascade_restrict? ;
 drop_view : DROP VIEW if_exists? view_name cascade_restrict? ;
 
 other
-    : empty_statement
+    : statement_termination
     ;
 
-empty_statement : ';' ;
+statement_termination : ';' ;
 
 cascade_restrict : CASCADE | RESTRICT ;
 if_exists : IF EXISTS ;
@@ -61,6 +61,6 @@ function_name : name=identifier; // todo:
 index_name : name=identifier;
 schema_name : name=identifier;
 sequence_name : name=identifier; // todo: 
-table_name : name=identifier; // todo:
-type_name : name=identifier; // todo:
-view_name : name=identifier; // todo:
+table_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
+type_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
+view_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;

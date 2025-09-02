@@ -15,11 +15,23 @@ internal partial class SqlVisitor<T>
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="Schema_nameContext"/>.</param>
-    /// <returns>A <see cref="Statement"/>.</returns>
+    /// <returns>A <see cref="SchemaName"/>.</returns>
     internal static SchemaName Visit(ILogger logger, Schema_nameContext context)
     {
         logger.TraceEntry();
         return new SchemaNameVisitor(logger).VisitSchema_name(context);
+    }
+
+    /// <summary>
+    /// Visit the sequence_name rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Sequence_nameContext"/>.</param>
+    /// <returns>A <see cref="SequenceName"/>.</returns>
+    internal static SequenceName Visit(ILogger logger, Sequence_nameContext context)
+    {
+        logger.TraceEntry();
+        return new SequenceNameVisitor(logger).VisitSequence_name(context);
     }
 
     /// <summary>
@@ -32,5 +44,17 @@ internal partial class SqlVisitor<T>
     {
         logger.TraceEntry();
         return new StatementVisitor(logger).VisitStatement(context);
+    }
+
+    /// <summary>
+    /// Visit the statement_termination rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Statement_terminationContext"/>.</param>
+    /// <returns>A <see cref="TerminationStatement"/>.</returns>
+    internal static TerminationStatement Visit(ILogger logger, Statement_terminationContext context)
+    {
+        logger.TraceEntry();
+        return new StatementTerminationVisitor(logger).VisitStatement_termination(context);
     }
 }

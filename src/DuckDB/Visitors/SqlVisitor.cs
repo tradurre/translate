@@ -15,7 +15,6 @@ namespace DuckDB.Visitors;
 /// </remarks>
 /// <param name="logger">An <see cref="ILogger"/>.</param>
 internal partial class SqlVisitor<T>(ILogger logger) : DuckDBParserBaseVisitor<T>()
-    where T : class
 {
     /// <summary>
     /// The <see cref="ILogger"/> for the visitor.

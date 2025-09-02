@@ -36,7 +36,7 @@ public partial class SqlServerWriter : IWriter
             //var temp_result = Write(fragment);
             //result.Errors.AddRange(temp_result.Errors);
             //result.Statements.AddRange(temp_result.Statements);
-            //result.Warnings.AddRange(temp_result.Warnings);            
+            //result.Warnings.AddRange(temp_result.Warnings);
         }
 
         return result;

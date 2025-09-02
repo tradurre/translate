@@ -20,10 +20,15 @@ public sealed class SchemaName : Identifier
     /// <summary>
     /// Initializes a new instance of the <see cref="SchemaName"/> class with the specified name.
     /// </summary>
-    /// <param name="name">The name of the database.</param>
+    /// <param name="name">The name of the schema.</param>
     /// <param name="source">The <see cref="Source"/> for the object.</param>
     public SchemaName(string name, Source source)
         : base(name, source)
     {
     }
+
+    /// <summary>
+    /// Gets or sets the database for the identifier.
+    /// </summary>
+    public DatabaseName? Database { get; set; }
 }

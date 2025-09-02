@@ -24,4 +24,9 @@ public sealed class DatabaseName : Identifier
         : base(name, source)
     {
     }
+
+    /// <summary>
+    /// Gets or sets the server for the identifier.
+    /// </summary>
+    public ServerName? Server { get; set; }
 }

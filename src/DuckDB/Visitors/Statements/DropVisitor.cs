@@ -30,8 +30,18 @@ internal sealed class DropVisitor : SqlVisitor<Statement>
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        Statement statement;
-        throw new NotImplementedException(context.Source().Value);
+        Statement statement = context.GetChild(0) switch
+        {
+            Drop_functionContext => Visit(Logger, context.drop_function()),
+            Drop_indexContext => Visit(Logger, context.drop_index()),
+            Drop_schemaContext => Visit(Logger, context.drop_schema()),
+            Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
+            Drop_tableContext => Visit(Logger, context.drop_table()),
+            Drop_typeContext => Visit(Logger, context.drop_type()),
+            Drop_viewContext => Visit(Logger, context.drop_view()),
+
+            _ => throw new NotImplementedException()
+        };
 
         Logger.NestEnd();
         return statement;

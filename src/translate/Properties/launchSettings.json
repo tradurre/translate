@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "translate": {
+      "commandName": "Project",
+      "commandLineArgs": "translate -s DuckDB -t MicrosoftSqlServer -i D:\\Sql\\DuckDB\\ -o D:\\output"
+    }
+  }
+}

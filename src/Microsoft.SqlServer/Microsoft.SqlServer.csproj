@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Visitors\**" />
+    <Compile Remove="Writers\**" />
+    <EmbeddedResource Remove="Visitors\**" />
+    <EmbeddedResource Remove="Writers\**" />
+    <None Remove="Visitors\**" />
+    <None Remove="Writers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="TSqlLexer.g4" />
     <None Remove="TSqlParser.g4" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-// <copyright file="StatementVisitor.cs">
+// <copyright file="OtherVisitor.cs">
 // All rights reserved.
 // </copyright>
 
@@ -9,22 +9,22 @@ using static DuckDB.DuckDBParser;
 namespace DuckDB.Visitors;
 
 /// <summary>
-/// Handles the statement rule.
+/// Handles the other rule.
 /// </summary>
-internal sealed class StatementVisitor : SqlVisitor<Statement>
+internal sealed class OtherVisitor : SqlVisitor<Statement>
 {
     /// <summary>
-    /// Initlaizes a new instance of the <see cref="StatementVisitor"/> class with the specified <see cref="ILogger"/>.
+    /// Initlaizes a new instance of the <see cref="OtherVisitor"/> class with the specified <see cref="ILogger"/>.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
-    public StatementVisitor(ILogger logger)
+    public OtherVisitor(ILogger logger)
         : base(logger)
     {
         Logger.TraceEntry();
     }
 
     /// <inheritdoc/>
-    public override Statement VisitStatement(StatementContext context)
+    public override Statement VisitOther(OtherContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
@@ -32,8 +32,7 @@ internal sealed class StatementVisitor : SqlVisitor<Statement>
 
         Statement statement = context.GetChild(0) switch
         {
-            DropContext => Visit(Logger, context.drop()),
-            OtherContext => Visit(Logger, context.other()),
+            Statement_terminationContext => Visit(Logger, context.statement_termination()),
 
             _ => throw new NotImplementedException()
         };
