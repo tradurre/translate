@@ -43,6 +43,7 @@ public static class Program
                 .AddSingleton<ITranslator, Translator>()
 
                 // Parser Extensions
+                .AddKeyedSingleton<IParser, DuckDB.DuckDBSqlParser>(SourceType.DuckDB)
                 .AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
                 .AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
 

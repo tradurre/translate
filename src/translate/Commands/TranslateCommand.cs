@@ -72,7 +72,6 @@ public class TranslateCommand : ICommand
     public ValueTask ExecuteAsync(IConsole console)
     {
         _logger.TraceEntry();
-
         Helper.WriteHeader();
 
         List<TranslationResult> results = [];
@@ -89,14 +88,10 @@ public class TranslateCommand : ICommand
         List<TranslationResult> results = [];
 
         foreach (FileInfo file in directory.GetFiles("*.sql"))
-        {
             results.AddRange(Translate(file));
-        }
 
         foreach (DirectoryInfo child in directory.GetDirectories())
-        {
             results.AddRange(Translate(child));
-        }
 
         return results;
     }

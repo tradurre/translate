@@ -7,6 +7,7 @@ using CliFx.Attributes;
 using CliFx.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Tradurre.Commands;
 
@@ -47,27 +48,46 @@ public class ParseCommand : ICommand
         _logger = logger;
         _provider = provider;
         _logger.TraceEntry();
+
+        // Get the translator
+        // TODO: Throw a better exception for logging
+        Translator = _provider.GetService<ITranslator>() ?? throw new NotImplementedException();
     }
 
     /// <inheritdoc/>
     public ValueTask ExecuteAsync(IConsole console)
     {
         _logger.TraceEntry();
-
         Helper.WriteHeader();
 
-        // Get the Translator
-        ITranslator? translator = _provider.GetService<ITranslator>() ?? throw new NotImplementedException();
-        
-        Translator = translator;
+        List<ParseResult> results = [];
 
-        // Rarse the input
-        //Parse(Input);
-
-        console.Output.WriteLine();
-        _logger.LogInformation("File(s) parsed successfully");
-        console.Output.WriteLine();
+        results.AddRange(Parse(Input));
 
         return default;
+    }
+
+    private List<ParseResult> Parse(DirectoryInfo directory)
+    {
+        _logger.TraceEntry();
+
+        List<ParseResult> results = [];
+
+        foreach (FileInfo file in directory.GetFiles("*.sql"))
+            results.AddRange(Parse(file));
+
+        foreach (DirectoryInfo child in directory.GetDirectories())
+            results.AddRange(Parse(child));
+
+        return results;
+    }
+
+    private ParseResult Parse(FileInfo file)
+    {
+        _logger.TraceEntry();
+        _logger.LogInformation("Parsing: {FilePath}", file.FullName);
+
+        string statements = File.ReadAllText(file.FullName);
+        return Translator.Parse(Type, statements);
     }
 }

@@ -2,7 +2,6 @@
 // All rights reserved.
 // </copyright>
 
-using System.Drawing.Imaging;
 using System.Text;
 using Tradurre;
 
@@ -46,7 +45,7 @@ internal partial class SqlWriter
         sb.Append(string.Join(", ", values));
 
         if (fragment.Force is not null && (bool)fragment.Force)
-            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... FORCE", 
+            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... FORCE",
                 "By default, Microsoft SQL Server will automatically terminate connections during the DROP DATABASE operation."));
 
         if (fragment.Options.Contains(DropDatabaseOption.At_PartitionNumber))
@@ -54,11 +53,11 @@ internal partial class SqlWriter
                 "Microsoft SQL Server does not support multi-node partitioned databases."));
 
         if (fragment.Options.Contains(DropDatabaseOption.Cascade))
-            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... CASCADE", 
+            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... CASCADE",
                 "By default, Microsoft SQL Server will automatically drop all objects during the DROP DATABASE operation."));
 
         if (fragment.Options.Contains(DropDatabaseOption.Restrict))
-            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... RESTRICT", 
+            result.Warnings.Add(new NotSupportedWarning("DROP DATABASE ... RESTRICT",
                 "Microsoft SQL Server does not support checking for the existence of cross database foreign keys during a DROP DATABASE operation."));
 
         sb.Append(';');

@@ -8,6 +8,8 @@ namespace Tradurre;
 /// Represents the name of a schema object.
 /// </summary>
 /// <remarks>
+/// DuckDB: CREATE SCHEMA https://duckdb.org/docs/stable/sql/statements/create_schema
+/// DuckDB: DROP SCHEMA https://duckdb.org/docs/stable/sql/statements/drop
 /// PostgreSQL: CREATE SCHEMA https://www.postgresql.org/docs/current/sql-createschema.html
 /// PostgreSQL: DROP SCHEMA https://www.postgresql.org/docs/current/sql-dropschema.html
 /// SQL Server: CREATE SCHEMA https://learn.microsoft.com/en-us/sql/t-sql/statements/create-schema-transact-sql

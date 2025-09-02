@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Writers\Writer.DropFunctionStatement.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Antlr4 Include="DuckDBParser.g4">
       <Package>DuckDB</Package>
       <Listener>False</Listener>

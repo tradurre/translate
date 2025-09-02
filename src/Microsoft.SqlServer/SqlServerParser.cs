@@ -28,6 +28,18 @@ public sealed class SqlServerParser : IParser
     public ParseResult Parse(string statement)
     {
         _logger.TraceEntry();
-        throw new NotImplementedException();
+
+        ParseResult result = new();
+
+        try
+        {
+
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("{Error}", ex);
+        }
+
+        return result;
     }
 }

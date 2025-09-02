@@ -10,6 +10,11 @@ namespace Tradurre;
 public enum SourceType
 {
     /// <summary>
+    /// Represents DuckDB.
+    /// </summary>
+    DuckDB,
+
+    /// <summary>
     /// Represents Microsoft SQL Server.
     /// </summary>
     MicrosoftSqlServer,
