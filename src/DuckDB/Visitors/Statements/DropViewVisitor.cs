@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_view rule.
 /// </summary>
-internal sealed class DropViewVisitor : SqlVisitor<DropViewStatement>
+internal sealed class DropViewVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropViewVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,11 +24,13 @@ internal sealed class DropViewVisitor : SqlVisitor<DropViewStatement>
     }
 
     /// <inheritdoc/>
-    public override DropViewStatement VisitDrop_view(Drop_viewContext context)
+    public override ParseResult VisitDrop_view(Drop_viewContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+
+        ParseResult result = new();
 
         DropViewStatement statement = new(
             Visit(Logger, context.view_name()),
@@ -40,7 +42,9 @@ internal sealed class DropViewVisitor : SqlVisitor<DropViewStatement>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
-        return statement;
+        return result;
     }
 }

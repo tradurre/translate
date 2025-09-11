@@ -39,7 +39,7 @@ internal sealed class DropVisitor : SqlVisitor<ParseResult>
             Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
             Drop_tableContext => Visit(Logger, context.drop_table()),
             Drop_typeContext => Visit(Logger, context.drop_type()),
-            //TODO: Drop_viewContext => Visit(Logger, context.drop_view()),
+            Drop_viewContext => Visit(Logger, context.drop_view()),
 
             _ => throw new NotImplementedException()
         };

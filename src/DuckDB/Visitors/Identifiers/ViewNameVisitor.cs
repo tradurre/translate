@@ -30,7 +30,8 @@ internal sealed class ViewNameVisitor : SqlVisitor<ViewName>
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        ViewName name = (ViewName)Visit(Logger, context.name);
+        Identifier value = Visit(Logger, context.name);
+        ViewName name = new(value.Value, context.Source());
 
         if (context.schema is not null)
         {
