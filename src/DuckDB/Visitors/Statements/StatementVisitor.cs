@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the statement rule.
 /// </summary>
-internal sealed class StatementVisitor : SqlVisitor<Statement>
+internal sealed class StatementVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="StatementVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,21 +24,19 @@ internal sealed class StatementVisitor : SqlVisitor<Statement>
     }
 
     /// <inheritdoc/>
-    public override Statement VisitStatement(StatementContext context)
+    public override ParseResult VisitStatement(StatementContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+        Logger.NestEnd();
 
-        Statement statement = context.GetChild(0) switch
+        return context.GetChild(0) switch
         {
             DropContext => Visit(Logger, context.drop()),
             OtherContext => Visit(Logger, context.other()),
 
             _ => throw new NotImplementedException()
         };
-
-        Logger.NestEnd();
-        return statement;
     }
 }

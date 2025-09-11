@@ -16,8 +16,8 @@ internal partial class SqlVisitor<T>
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="DropContext"/>.</param>
-    /// <returns>A <see cref="Statement"/>.</returns>
-    internal static Statement Visit(ILogger logger, DropContext context)
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, DropContext context)
     {
         logger.TraceEntry();
         return new DropVisitor(logger).VisitDrop(context);
@@ -28,15 +28,16 @@ internal partial class SqlVisitor<T>
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="Drop_functionContext"/>.</param>
-    /// <returns>A <see cref="DropFunctionStatement"/>.</returns>
-    internal static DropFunctionStatement Visit(ILogger logger, Drop_functionContext context)
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, Drop_functionContext context)
     {
         logger.TraceEntry();
         return new DropFunctionVisitor(logger).VisitDrop_function(context);
     }
-
+    /*
+     * 
     /// <summary>
-    /// Visit the drop_index rule.
+    /// Visit the drop_index rule.  
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="Drop_indexContext"/>.</param>
@@ -106,4 +107,5 @@ internal partial class SqlVisitor<T>
         logger.TraceEntry();
         return new DropViewVisitor(logger).VisitDrop_view(context);
     }
+    */
 }

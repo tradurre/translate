@@ -68,7 +68,10 @@ public class DuckDBSqlParser : IParser
             // Visit
             BatchVisitor visitor = new(_logger);
             var results = visitor.VisitBatch(parser.batch());
+            //foreach (var s1 in statements)
+              //  result.Statements.Add(s1);
 
+            //result.Statements.AddRange(results);
         }
         catch (Exception ex)
         {

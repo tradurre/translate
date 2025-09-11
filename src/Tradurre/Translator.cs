@@ -5,7 +5,6 @@
 using Antlr4.Runtime;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Tradurre;
 
@@ -31,7 +30,7 @@ public sealed class Translator : ITranslator
         _logger.TraceEntry();
 
         // Get the parser
-        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException($"{source}");
+        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException(source);
 
         return parser.Parse(statement);
     }
@@ -45,15 +44,15 @@ public sealed class Translator : ITranslator
         TranslationResult result = new();
 
         // Get the parser
-        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException($"{source}");
+        var parser = _provider.GetKeyedService<IParser>(source) ?? throw new ParserNotFoundException(source);
 
         ParseResult parse_result = parser.Parse(statement);
-        result.Add(parse_result);
+        // TODO: result.Add(parse_result);
 
         // Get the writer
         var writer = _provider.GetKeyedService<IWriter>(target) ?? throw new WriterNotFoundException($"{target}");
-        var write_result = writer.Write([.. parse_result.Statements]);
-        result.Add(write_result);
+        // TODO: var write_result = writer.Write([.. parse_result.Statements]);
+        // TODO: result.Add(write_result);
 
         return result;
     }

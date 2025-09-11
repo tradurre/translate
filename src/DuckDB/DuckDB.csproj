@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Writers\Writer.DropFunctionStatement.cs" />
+    <Compile Remove="Visitors\**" />
+    <Compile Remove="Writers\**" />
+    <EmbeddedResource Remove="Visitors\**" />
+    <EmbeddedResource Remove="Writers\**" />
+    <None Remove="Visitors\**" />
+    <None Remove="Writers\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +28,27 @@
       <Visitor>True</Visitor>
       <Error>True</Error>
     </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Visitors\BatchVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\FunctionNameVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\IdentifierVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\IndexNameVisitor.cs" />
+    <Compile Include="Visitors\SqlVisitor.C.cs" />
+    <Compile Include="Visitors\SqlVisitor.cs" />
+    <Compile Include="Visitors\SqlVisitor.D.cs" />
+    <Compile Include="Visitors\SqlVisitor.F.cs" />
+    <Compile Include="Visitors\SqlVisitor.I.cs" />
+    <Compile Include="Visitors\SqlVisitor.O.cs" />
+    <Compile Include="Visitors\SqlVisitor.S.cs" />
+    <Compile Include="Visitors\SqlVisitor.T.cs" />
+    <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
+    <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />
+    <Compile Include="Visitors\Statements\DropVisitor.cs" />
+    <Compile Include="Visitors\Statements\OtherVisitor.cs" />
+    <Compile Include="Visitors\Statements\StatementTerminationVisitor.cs" />
+    <Compile Include="Visitors\Statements\StatementVisitor.cs" />
   </ItemGroup>
 
   <ItemGroup>

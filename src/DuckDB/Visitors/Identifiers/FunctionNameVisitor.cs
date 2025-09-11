@@ -29,14 +29,13 @@ internal sealed class FunctionNameVisitor : SqlVisitor<FunctionName>
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
-
         Identifier value = Visit(Logger, context.identifier());
-        FunctionName name = new(value.Value, context.Source())
+
+        Logger.NestEnd();
+
+        return new FunctionName(value.Value, context.Source())
         {
             IsQuoted = value.IsQuoted,
         };
-
-        Logger.NestEnd();
-        return name;
     }
 }

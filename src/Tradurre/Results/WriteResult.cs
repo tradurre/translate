@@ -17,14 +17,14 @@ public sealed class WriteResult
     }
 
     /// <summary>
-    /// Gets or sets the statement from the writer operation.
-    /// </summary>
-    public string Statement { get; set; } = string.Empty;
-
-    /// <summary>
     /// Gets any validation or writer errors from the operation.
     /// </summary>
     public List<Error> Errors { get; } = [];
+
+    /// <summary>
+    /// Gets a collection of <see cref="Statement"/> from the operation.
+    /// </summary>
+    public List<Statement> Statements { get; } = [];
 
     /// <summary>
     /// Gets any validation or writer warnings from the operation.

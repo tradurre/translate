@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="SqlServerParser.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="TSqlLexer.g4" />
     <None Remove="TSqlParser.g4" />
   </ItemGroup>
@@ -31,6 +35,10 @@
       <Listener>False</Listener>
       <Visitor>True</Visitor>
     </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Writers\SqlWriter.cs" />
   </ItemGroup>
 
   <ItemGroup>

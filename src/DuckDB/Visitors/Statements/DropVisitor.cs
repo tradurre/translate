@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_clause rule.
 /// </summary>
-internal sealed class DropVisitor : SqlVisitor<Statement>
+internal sealed class DropVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,26 +24,24 @@ internal sealed class DropVisitor : SqlVisitor<Statement>
     }
 
     /// <inheritdoc/>
-    public override Statement VisitDrop(DropContext context)
+    public override ParseResult VisitDrop(DropContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+        Logger.NestEnd();
 
-        Statement statement = context.GetChild(0) switch
+        return context.GetChild(0) switch
         {
             Drop_functionContext => Visit(Logger, context.drop_function()),
-            Drop_indexContext => Visit(Logger, context.drop_index()),
-            Drop_schemaContext => Visit(Logger, context.drop_schema()),
-            Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
-            Drop_tableContext => Visit(Logger, context.drop_table()),
-            Drop_typeContext => Visit(Logger, context.drop_type()),
-            Drop_viewContext => Visit(Logger, context.drop_view()),
+            //TODO: Drop_indexContext => Visit(Logger, context.drop_index()),
+            //TODO: Drop_schemaContext => Visit(Logger, context.drop_schema()),
+            //TODO: Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
+            //TODO: Drop_tableContext => Visit(Logger, context.drop_table()),
+            //TODO: Drop_typeContext => Visit(Logger, context.drop_type()),
+            //TODO: Drop_viewContext => Visit(Logger, context.drop_view()),
 
             _ => throw new NotImplementedException()
         };
-
-        Logger.NestEnd();
-        return statement;
     }
 }

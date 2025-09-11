@@ -7,6 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Visitors\**" />
+    <Compile Remove="Writers\**" />
+    <EmbeddedResource Remove="Visitors\**" />
+    <EmbeddedResource Remove="Writers\**" />
+    <None Remove="Visitors\**" />
+    <None Remove="Writers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="PostgreSqlParser.cs" />
+    <Compile Remove="PostgreSqlWriter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Antlr4 Include="PostgresParser.g4">
       <Package>PostgreSql</Package>
       <Listener>False</Listener>
@@ -24,10 +38,6 @@
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
     <PackageReference Include="Antlr4BuildTasks" Version="12.10.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Writers\" />
   </ItemGroup>
 
   <ItemGroup>

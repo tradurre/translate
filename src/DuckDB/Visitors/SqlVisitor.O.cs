@@ -17,7 +17,7 @@ internal partial class SqlVisitor<T>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="OtherContext"/>.</param>
     /// <returns>A <see cref="Statement"/>.</returns>
-    internal static Statement Visit(ILogger logger, OtherContext context)
+    internal static ParseResult Visit(ILogger logger, OtherContext context)
     {
         logger.TraceEntry();
         return new OtherVisitor(logger).VisitOther(context);

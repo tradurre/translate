@@ -71,16 +71,28 @@ public class TranslateCommand : ICommand
 
     public ValueTask ExecuteAsync(IConsole console)
     {
-        _logger.TraceEntry();
-        Helper.WriteHeader();
+        try
+        {
+            _logger.TraceEntry();
+            Helper.WriteHeader();
 
-        List<TranslationResult> results = [];
+            List<TranslationResult> results = [];
 
-        results.AddRange(Translate(Input));
+            results.AddRange(Translate(Input));
 
-        Report(results);
+            Report(results);
 
-        return default;
+            return default;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+#if DEBUG
+            _logger.LogError(ex.ToString());
+#endif
+
+            return default;
+        }
     }
 
     private List<TranslationResult> Translate(DirectoryInfo directory)
@@ -112,20 +124,16 @@ public class TranslateCommand : ICommand
 
         _logger.LogInformation("Statements: {Count}", results.Count);
 
-        foreach (var result in results)
-        {
-            _logger.LogDebug("Result: " +
-                "\r\n\tStatements: {Statements}" +
-                "\r\n\tErrors: {Errors}" +
-                "\r\n\tWarnings: {Warnings}",
-                result.Statements.Count,
-                result.Errors.Count,
-                result.Warnings.Count
-                );
-            //foreach(var statement in item.Statements)
-            //{
-            //    _logger.LogInformation("\tStatement: {Statement}", statement.Source);
-           // }
-        }
+        //foreach (var result in results)
+        //{
+        //    _logger.LogDebug("Result: " +
+        //        "\r\n\tStatements: {Statements}" +
+        //        "\r\n\tErrors: {Errors}" +
+        //        "\r\n\tWarnings: {Warnings}",
+        //        result.Statements.Count,
+        //        result.Errors.Count,
+        //        result.Warnings.Count
+        //        );
+        //}
     }
 }

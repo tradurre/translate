@@ -28,7 +28,12 @@ public static class Program
                     .WriteTo.Console(
                         formatProvider: null,
                         outputTemplate: "{Level}: {Message:lj}{NewLine}{Exception}",
-                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Verbose,
+
+#if DEBUG
+                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug,
+#else
+                        restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Warning,
+#endif
                         theme: ConsoleTheme.Translate
                         )
                     .CreateLogger();
@@ -44,12 +49,12 @@ public static class Program
 
                 // Parser Extensions
                 .AddKeyedSingleton<IParser, DuckDB.DuckDBSqlParser>(SourceType.DuckDB)
-                .AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
-                .AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
+                //.AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
+                //.AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
 
                 // Writer Extensions
                 .AddKeyedSingleton<IWriter, SqlServerWriter>(TargetType.MicrosoftSqlServer)
-                .AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
+                //.AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
 
                 .BuildServiceProvider();
 
@@ -63,7 +68,6 @@ public static class Program
         catch (Exception ex)
         {
             Log.Logger.Fatal(ex.Message);
-
 #if DEBUG
             Log.Logger.Fatal(ex.ToString());
 #endif

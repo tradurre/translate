@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the statement_termination rule.
 /// </summary>
-internal sealed class StatementTerminationVisitor : SqlVisitor<TerminationStatement>
+internal sealed class StatementTerminationVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="StatementTerminationVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,13 +24,17 @@ internal sealed class StatementTerminationVisitor : SqlVisitor<TerminationStatem
     }
 
     /// <inheritdoc/>
-    public override TerminationStatement VisitStatement_termination(Statement_terminationContext context)
+    public override ParseResult VisitStatement_termination(Statement_terminationContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
+        ParseResult result = new();
+
+        result.Statements.Add(new TerminationStatement(context.Source()));
+
         Logger.NestEnd();
-        return new TerminationStatement(context.Source());
+        return result;
     }
 }

@@ -12,13 +12,13 @@ namespace Microsoft.SqlServer.Writers;
 /// </summary>
 internal partial class SqlWriter
 {
-    private readonly ILogger<SqlWriter> _logger;
+    private readonly ILogger _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SqlWriter"/> with the specified <see cref="ILogger{TCategoryName}"/>.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger{TCategoryName}"/>.</param>
-    public SqlWriter(ILogger<SqlWriter> logger)
+    public SqlWriter(ILogger logger)
     {
         logger.TraceEntry();
         _logger = logger;

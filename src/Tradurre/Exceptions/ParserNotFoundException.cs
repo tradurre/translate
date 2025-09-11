@@ -20,9 +20,9 @@ public sealed class ParserNotFoundException : Exception
     /// <summary>
     /// Initializes a new instance of the <see cref="ParserNotFoundException"/> class with a specified error message.
     /// </summary>
-    /// <param name="message">The message that describes the error.</param>
-    public ParserNotFoundException(string? message)
-        : base(message)
+    /// <param name="parser_name">The message that describes the error.</param>
+    public ParserNotFoundException(SourceType type)
+        : base(string.Format("The '{0}' parser was not found.", type))
     {
     }
 }

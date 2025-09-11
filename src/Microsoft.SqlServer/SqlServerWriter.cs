@@ -3,6 +3,7 @@
 // </copyright>
 
 using Microsoft.Extensions.Logging;
+using Microsoft.SqlServer.Writers;
 using Tradurre;
 
 namespace Microsoft.SqlServer;
@@ -12,7 +13,7 @@ namespace Microsoft.SqlServer;
 /// </summary>
 public partial class SqlServerWriter : IWriter
 {
-    private readonly ILogger<SqlServerWriter> _logger;
+    private readonly ILogger _logger;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SqlServerWriter"/> with the specified <see cref="ILogger{TCategoryName}"/>.
@@ -30,10 +31,11 @@ public partial class SqlServerWriter : IWriter
         _logger.TraceEntry();
 
         WriteResult result = new();
+        SqlWriter writer = new(_logger);
 
         foreach (Fragment fragment in statements)
         {
-            //var temp_result = Write(fragment);
+            //var temp_result = writer.Write(fragment);
             //result.Errors.AddRange(temp_result.Errors);
             //result.Statements.AddRange(temp_result.Statements);
             //result.Warnings.AddRange(temp_result.Warnings);

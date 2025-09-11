@@ -16,11 +16,14 @@ internal partial class SqlWriter
     /// </summary>
     /// <param name="fragment">The <see cref="Fragment"/> to write.</param>
     /// <returns>A <see cref="WriteResult"/>.</returns>
-    public WriteResult Write(Fragment fragment)
+    internal WriteResult Write(Fragment fragment)
     {
         _logger.TraceEntry();
 
         WriteResult result = new();
+
+        throw new NotImplementedException();
+
 
         // TODO: Write the fragments
 

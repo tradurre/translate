@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the batch rule.
 /// </summary>
-internal sealed class BatchVisitor : SqlVisitor<List<Statement>>
+internal sealed class BatchVisitor : SqlVisitor<List<ParseResult>>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="BatchVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,15 +24,15 @@ internal sealed class BatchVisitor : SqlVisitor<List<Statement>>
     }
 
     /// <inheritdoc/>
-    public override List<Statement> VisitBatch(BatchContext context)
+    public override List<ParseResult> VisitBatch(BatchContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        List<Statement> results = [];
+        List<ParseResult> results = new();
 
-        context.statement().ToList<StatementContext>().ForEach(f => results.Add(Visit(Logger, f)));
+        context.statement().ToList().ForEach(f => results.Add(Visit(Logger, f)));
 
         Logger.NestEnd();
         return results;

@@ -9,7 +9,7 @@ namespace Microsoft.SqlServer.Writers;
 /// <summary>
 /// The writer for Microsoft SQL Server.
 /// </summary>
-internal partial class SqlWriter
+public partial class SqlWriter
 {
     /// <summary>
     /// Writes the <see cref="Statement"/>.
@@ -23,7 +23,8 @@ internal partial class SqlWriter
         WriteResult result = new();
 
         // TODO: Write the Statements
-
+        throw new NotImplementedException();
+        
         return result;
     }
 }
