@@ -12,18 +12,6 @@ namespace DuckDB.Visitors;
 internal partial class SqlVisitor<T>
 {
     /// <summary>
-    /// Visit the drop rule.
-    /// </summary>
-    /// <param name="logger">An <see cref="ILogger"/>.</param>
-    /// <param name="context">The <see cref="DropContext"/>.</param>
-    /// <returns>A <see cref="ParseResult"/>.</returns>
-    internal static ParseResult Visit(ILogger logger, DropContext context)
-    {
-        logger.TraceEntry();
-        return new DropVisitor(logger).VisitDrop(context);
-    }
-
-    /// <summary>
     /// Visit the drop_function rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
@@ -34,19 +22,33 @@ internal partial class SqlVisitor<T>
         logger.TraceEntry();
         return new DropFunctionVisitor(logger).VisitDrop_function(context);
     }
-    /*
-     * 
+
     /// <summary>
-    /// Visit the drop_index rule.  
+    /// Visit the drop_index rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="Drop_indexContext"/>.</param>
-    /// <returns>A <see cref="DropIndexStatement"/>.</returns>
-    internal static DropIndexStatement Visit(ILogger logger, Drop_indexContext context)
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, Drop_indexContext context)
     {
         logger.TraceEntry();
         return new DropIndexVisitor(logger).VisitDrop_index(context);
     }
+
+    /// <summary>
+    /// Visit the drop rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="DropContext"/>.</param>
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, DropContext context)
+    {
+        logger.TraceEntry();
+        return new DropVisitor(logger).VisitDrop(context);
+    }
+    /*
+     *
+
 
     /// <summary>
     /// Visit the drop_schema rule.

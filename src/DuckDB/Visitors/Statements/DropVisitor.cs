@@ -34,7 +34,7 @@ internal sealed class DropVisitor : SqlVisitor<ParseResult>
         return context.GetChild(0) switch
         {
             Drop_functionContext => Visit(Logger, context.drop_function()),
-            //TODO: Drop_indexContext => Visit(Logger, context.drop_index()),
+            Drop_indexContext => Visit(Logger, context.drop_index()),
             //TODO: Drop_schemaContext => Visit(Logger, context.drop_schema()),
             //TODO: Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
             //TODO: Drop_tableContext => Visit(Logger, context.drop_table()),

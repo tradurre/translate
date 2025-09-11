@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_index rule.
 /// </summary>
-internal sealed class DropIndexVisitor : SqlVisitor<DropIndexStatement>
+internal sealed class DropIndexVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropIndexVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,11 +24,13 @@ internal sealed class DropIndexVisitor : SqlVisitor<DropIndexStatement>
     }
 
     /// <inheritdoc/>
-    public override DropIndexStatement VisitDrop_index(Drop_indexContext context)
+    public override ParseResult VisitDrop_index(Drop_indexContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+
+        ParseResult result = new();
 
         DropIndexStatement statement = new(
             Visit(Logger, context.index_name()),
@@ -40,7 +42,9 @@ internal sealed class DropIndexVisitor : SqlVisitor<DropIndexStatement>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
-        return statement;
+        return result;
     }
 }

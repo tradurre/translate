@@ -42,6 +42,8 @@ internal sealed class DropFunctionVisitor : SqlVisitor<ParseResult>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
         return result;
     }

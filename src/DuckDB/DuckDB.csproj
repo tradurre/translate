@@ -45,6 +45,7 @@
     <Compile Include="Visitors\SqlVisitor.T.cs" />
     <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
     <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />
+    <Compile Include="Visitors\Statements\DropIndexVisitor.cs" />
     <Compile Include="Visitors\Statements\DropVisitor.cs" />
     <Compile Include="Visitors\Statements\OtherVisitor.cs" />
     <Compile Include="Visitors\Statements\StatementTerminationVisitor.cs" />

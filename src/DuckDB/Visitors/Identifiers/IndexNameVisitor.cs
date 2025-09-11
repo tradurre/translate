@@ -29,10 +29,13 @@ internal sealed class IndexNameVisitor : SqlVisitor<IndexName>
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
-
-        Identifier value = Visit(context.identifier());
+        Identifier value = Visit(Logger, context.identifier());
 
         Logger.NestEnd();
-        return (IndexName)value;
+
+        return new IndexName(value.Value, context.Source())
+        {
+            IsQuoted = value.IsQuoted,
+        };
     }
 }
