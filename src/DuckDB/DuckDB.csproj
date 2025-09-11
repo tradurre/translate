@@ -35,6 +35,7 @@
     <Compile Include="Visitors\Identifiers\FunctionNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IdentifierVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IndexNameVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\SchemaNameVisitor.cs" />
     <Compile Include="Visitors\SqlVisitor.C.cs" />
     <Compile Include="Visitors\SqlVisitor.cs" />
     <Compile Include="Visitors\SqlVisitor.D.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
     <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />
     <Compile Include="Visitors\Statements\DropIndexVisitor.cs" />
+    <Compile Include="Visitors\Statements\DropSchemaVisitor.cs" />
     <Compile Include="Visitors\Statements\DropVisitor.cs" />
     <Compile Include="Visitors\Statements\OtherVisitor.cs" />
     <Compile Include="Visitors\Statements\StatementTerminationVisitor.cs" />

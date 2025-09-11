@@ -29,10 +29,13 @@ internal sealed class SchemaNameVisitor : SqlVisitor<SchemaName>
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
-
-        Identifier value = Visit(context.identifier());
+        Identifier value = Visit(Logger, context.identifier());
 
         Logger.NestEnd();
-        return (SchemaName)value;
+
+        return new SchemaName(value.Value, context.Source())
+        {
+            IsQuoted = value.IsQuoted,
+        };
     }
 }

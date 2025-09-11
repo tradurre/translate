@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_schema rule.
 /// </summary>
-internal sealed class DropSchemaVisitor : SqlVisitor<DropSchemaStatement>
+internal sealed class DropSchemaVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropSchemaVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,13 +24,13 @@ internal sealed class DropSchemaVisitor : SqlVisitor<DropSchemaStatement>
     }
 
     /// <inheritdoc/>
-    public override DropSchemaStatement VisitDrop_schema(Drop_schemaContext context)
+    public override ParseResult VisitDrop_schema(Drop_schemaContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        var schema = Visit(context.schema_name());
+        ParseResult result = new();
 
         DropSchemaStatement statement = new(
             Visit(Logger, context.schema_name()),
@@ -42,7 +42,9 @@ internal sealed class DropSchemaVisitor : SqlVisitor<DropSchemaStatement>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
-        return statement;
+        return result;
     }
 }
