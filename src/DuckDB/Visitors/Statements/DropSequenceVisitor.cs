@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_sequence rule.
 /// </summary>
-internal sealed class DropSequenceVisitor : SqlVisitor<DropSequenceStatement>
+internal sealed class DropSequenceVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropSequenceVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,11 +24,13 @@ internal sealed class DropSequenceVisitor : SqlVisitor<DropSequenceStatement>
     }
 
     /// <inheritdoc/>
-    public override DropSequenceStatement VisitDrop_sequence(Drop_sequenceContext context)
+    public override ParseResult VisitDrop_sequence(Drop_sequenceContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+
+        ParseResult result = new();
 
         DropSequenceStatement statement = new(
             Visit(Logger, context.sequence_name()),
@@ -40,7 +42,9 @@ internal sealed class DropSequenceVisitor : SqlVisitor<DropSequenceStatement>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
-        return statement;
+        return result;
     }
 }

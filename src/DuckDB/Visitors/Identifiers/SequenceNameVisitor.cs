@@ -29,10 +29,13 @@ internal sealed class SequenceNameVisitor : SqlVisitor<SequenceName>
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
-
-        Identifier value = Visit(context.identifier());
+        Identifier value = Visit(Logger, context.identifier());
 
         Logger.NestEnd();
-        return (SequenceName)value;
+
+        return new SequenceName(value.Value, context.Source())
+        {
+            IsQuoted = value.IsQuoted,
+        };
     }
 }

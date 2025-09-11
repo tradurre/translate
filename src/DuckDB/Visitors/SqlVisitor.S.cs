@@ -22,17 +22,17 @@ internal partial class SqlVisitor<T>
         return new SchemaNameVisitor(logger).VisitSchema_name(context);
     }
 
-    ///// <summary>
-    ///// Visit the sequence_name rule.
-    ///// </summary>
-    ///// <param name="logger">An <see cref="ILogger"/>.</param>
-    ///// <param name="context">The <see cref="Sequence_nameContext"/>.</param>
-    ///// <returns>A <see cref="SequenceName"/>.</returns>
-    //internal static SequenceName Visit(ILogger logger, Sequence_nameContext context)
-    //{
-    //    logger.TraceEntry();
-    //    return new SequenceNameVisitor(logger).VisitSequence_name(context);
-    //}
+    /// <summary>
+    /// Visit the sequence_name rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Sequence_nameContext"/>.</param>
+    /// <returns>A <see cref="SequenceName"/>.</returns>
+    internal static SequenceName Visit(ILogger logger, Sequence_nameContext context)
+    {
+        logger.TraceEntry();
+        return new SequenceNameVisitor(logger).VisitSequence_name(context);
+    }
 
     /// <summary>
     /// Visit the statement rule.

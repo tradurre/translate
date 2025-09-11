@@ -36,7 +36,7 @@ internal sealed class DropVisitor : SqlVisitor<ParseResult>
             Drop_functionContext => Visit(Logger, context.drop_function()),
             Drop_indexContext => Visit(Logger, context.drop_index()),
             Drop_schemaContext => Visit(Logger, context.drop_schema()),
-            //TODO: Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
+            Drop_sequenceContext => Visit(Logger, context.drop_sequence()),
             //TODO: Drop_tableContext => Visit(Logger, context.drop_table()),
             //TODO: Drop_typeContext => Visit(Logger, context.drop_type()),
             //TODO: Drop_viewContext => Visit(Logger, context.drop_view()),
