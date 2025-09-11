@@ -37,6 +37,7 @@
     <Compile Include="Visitors\Identifiers\IndexNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\SchemaNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\SequenceNameVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\TableNameVisitor.cs" />
     <Compile Include="Visitors\SqlVisitor.C.cs" />
     <Compile Include="Visitors\SqlVisitor.cs" />
     <Compile Include="Visitors\SqlVisitor.D.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Visitors\Statements\DropIndexVisitor.cs" />
     <Compile Include="Visitors\Statements\DropSchemaVisitor.cs" />
     <Compile Include="Visitors\Statements\DropSequenceVisitor.cs" />
+    <Compile Include="Visitors\Statements\DropTableVisitor.cs" />
     <Compile Include="Visitors\Statements\DropVisitor.cs" />
     <Compile Include="Visitors\Statements\OtherVisitor.cs" />
     <Compile Include="Visitors\Statements\StatementTerminationVisitor.cs" />

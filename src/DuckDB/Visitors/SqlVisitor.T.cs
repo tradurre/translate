@@ -11,17 +11,17 @@ namespace DuckDB.Visitors;
 
 internal partial class SqlVisitor<T>
 {
-    ///// <summary>
-    ///// Visit the table_name rule.
-    ///// </summary>
-    ///// <param name="logger">An <see cref="ILogger"/>.</param>
-    ///// <param name="context">The <see cref="Table_nameContext"/>.</param>
-    ///// <returns>A <see cref="TableName"/>.</returns>
-    //internal static TableName Visit(ILogger logger, Table_nameContext context)
-    //{
-    //    logger.TraceEntry();
-    //    return new TableNameVisitor(logger).VisitTable_name(context);
-    //}
+    /// <summary>
+    /// Visit the table_name rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Table_nameContext"/>.</param>
+    /// <returns>A <see cref="TableName"/>.</returns>
+    internal static TableName Visit(ILogger logger, Table_nameContext context)
+    {
+        logger.TraceEntry();
+        return new TableNameVisitor(logger).VisitTable_name(context);
+    }
 
     ///// <summary>
     ///// Visit the type_name rule.

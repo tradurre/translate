@@ -30,7 +30,10 @@ internal sealed class TableNameVisitor : SqlVisitor<TableName>
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        TableName name = (TableName)Visit(Logger, context.name);
+        Identifier value = Visit(Logger, context.name);
+
+
+        TableName name = new(value.Value, context.Source());
 
         if (context.schema is not null)
         {
