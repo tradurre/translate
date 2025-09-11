@@ -11,7 +11,7 @@ namespace DuckDB.Visitors;
 /// <summary>
 /// Handles the drop_type rule.
 /// </summary>
-internal sealed class DropTypeVisitor : SqlVisitor<DropTypeStatement>
+internal sealed class DropTypeVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
     /// Initlaizes a new instance of the <see cref="DropTypeVisitor"/> class with the specified <see cref="ILogger"/>.
@@ -24,11 +24,13 @@ internal sealed class DropTypeVisitor : SqlVisitor<DropTypeStatement>
     }
 
     /// <inheritdoc/>
-    public override DropTypeStatement VisitDrop_type(Drop_typeContext context)
+    public override ParseResult VisitDrop_type(Drop_typeContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
+
+        ParseResult result = new();
 
         DropTypeStatement statement = new(
             Visit(Logger, context.type_name()),
@@ -40,7 +42,9 @@ internal sealed class DropTypeVisitor : SqlVisitor<DropTypeStatement>
         if (context.cascade_restrict() is not null)
             statement.Option = Visit(Logger, context.cascade_restrict());
 
+        result.Statements.Add(statement);
+
         Logger.NestEnd();
-        return statement;
+        return result;
     }
 }

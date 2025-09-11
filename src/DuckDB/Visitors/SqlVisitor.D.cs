@@ -83,22 +83,19 @@ internal partial class SqlVisitor<T>
         return new DropTableVisitor(logger).VisitDrop_table(context);
     }
 
-    /*
-     *
-
-
     /// <summary>
     /// Visit the drop_type rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
     /// <param name="context">The <see cref="Drop_typeContext"/>.</param>
-    /// <returns>A <see cref="DropTypeStatement"/>.</returns>
-    internal static DropTypeStatement Visit(ILogger logger, Drop_typeContext context)
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, Drop_typeContext context)
     {
         logger.TraceEntry();
         return new DropTypeVisitor(logger).VisitDrop_type(context);
     }
 
+    /*
     /// <summary>
     /// Visit the drop_view rule.
     /// </summary>
