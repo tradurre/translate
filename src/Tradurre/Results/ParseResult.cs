@@ -17,17 +17,12 @@ public sealed class ParseResult
     }
 
     /// <summary>
-    /// Gets any validation or parsing errors from a parse.
+    /// A collection of parsing or validation messages.
     /// </summary>
-    public List<Error> Errors { get; } = [];
+    public List<Message> Messages { get; } = [];
 
     /// <summary>
     /// Gets a collection of <see cref="Statement"/> from a parse.
     /// </summary>
     public List<Statement> Statements { get; } = [];
-
-    /// <summary>
-    /// Gets any validation or parsing warnings from a parse.
-    /// </summary>
-    public List<Warning> Warnings { get; } = [];
 }

@@ -3,37 +3,114 @@ lexer grammar DuckDBLexer;
 channels { comment, whitespace }
 options { caseInsensitive = true; }
 
-CASCADE : 'CASCADE';
-CREATE : 'CREATE';
+ARRAY : 'ARRAY' ;
+AS : 'AS';
 
+BIGINT : 'BIGINT' ;
+BINARY : 'BINARY' ;
+BIT : 'BIT' ;
+BITSTRING : 'BITSTRING' ;
+BLOB : 'BLOB' ;
+BOOL : 'BOOL' ;
+BOOLEAN : 'BOOLEAN' ;
+BPCHAR : 'BPCHAR' ;
+BY : 'BY';
+BYTEA : 'BYTEA' ;
+
+CASCADE : 'CASCADE';
+CHAR : 'CHAR' ;
+CREATE : 'CREATE';
+CYCLE : 'CYCLE';
+
+DATA : 'DATA';
+DATE : 'DATE' ;
+DATETIME : 'DATETIME' ;
+DECIMAL : 'DECIMAL' ;
+DOUBLE : 'DOUBLE' ;
 DROP : 'DROP';
 
 EXISTS : 'EXISTS';
 
+FLOAT : 'FLOAT' ;
+FLOAT4 : 'FLOAT4' ;
+FLOAT8 : 'FLOAT8' ;
 FUNCTION : 'FUNCTION';
 
+HUGEINT : 'HUGEINT' ;
+
 IF : 'IF' ;
+INCREMENT : 'INCREMENT';
 INDEX: 'INDEX';
+INT : 'INT' ;
+INT1 : 'INT1' ;
+INT2 : 'INT2' ;
+INT4 : 'INT4' ;
+INT8 : 'INT8' ;
+INTEGER : 'INTEGER' ;
+INTERVAL : 'INTERVAL' ;
+
+JSON : 'JSON' ;
+
+LIST : 'LIST' ;
+LOGICAL : 'LOGICAL' ;
+LONG : 'LONG' ;
 
 MACRO : 'MACRO';
+MAP : 'MAP' ;
+MAXVALUE : 'MAXVALUE' ;
+MINVALUE : 'MINVALUE' ;
 
+NO : 'NO';
 NOT : 'NOT';
+NUMERIC : 'NUMERIC' ;
 
 ON : 'ON';
 OR : 'OR';
 
+PERSISTENT : 'PERSISTENT';
+REAL : 'REAL' ;
 REPLACE : 'REPLACE';
 RESTRICT : 'RESTRICT';
 
 SCHEMA : 'SCHEMA';
+SECRET : 'SECRET';
 SEQUENCE : 'SEQUENCE';
+SHORT : 'SHORT' ;
+SIGNED : 'SIGNED' ;
+SMALLINT : 'SMALLINT' ;
+START : 'START';
+STRING : 'STRING' ;
+STRUCT : 'STRUCT' ;
 
 TABLE : 'TABLE';
+TEMP : 'TEMP';
+TEMPORARY : 'TEMPORARY';
+TEXT : 'TEXT' ;
+TIME : 'TIME' ;
+TIMESTAMP : 'TIMESTAMP' ;
+TIMEZONE : 'TIMEZONE' ;
+TIMESTAMPTZ : 'TIMESTAMPTZ' ;
+TINYINT : 'TINYINT' ;
 TYPE : 'TYPE';
 
+UBIGINT : 'UBIGINT' ;
+UHUGEINT : 'UHUGEINT' ;
+UINTEGER : 'UINTEGER' ;
+UNION : 'UNION' ;
 UNIQUE : 'UNIQUE';
+USING : 'USING';
+USMALLINT : 'USMALLINT' ;
+UTINYINT : 'UTINYINT' ;
+UUID : 'UUID' ;
 
+VARBINARY : 'VARBINARY' ;
+VARCHAR : 'VARCHAR' ;
 VIEW : 'VIEW';
+
+WITH : 'WITH';
+
+ZONE : 'ZONE';
+
 
 EQ : '=' ;
 NEQ : '<>' | '!=' ;
@@ -68,7 +145,11 @@ COMMENT_MULTI_LINE : '/*' (.)*? '*/' -> channel(comment) ;
 COMMENT_SINGLE_LINE : '--' ~[\r\n]* -> channel(comment) ;
 
 DOUBLE_QUOTED_IDENTIFER : '"' ( '""' | ~'"' )* '"' ;
+ID_DIGIT : '-'? F_DIGIT+ ;
 IDENTIFIER : ( [A-Z] | FULL_WIDTH_LETTER ) ( [A-Z_#$@0-9] | FULL_WIDTH_LETTER )* ;
+
+
+fragment F_DIGIT : [0-9];
 
 fragment FULL_WIDTH_LETTER options {
     caseInsensitive = false;

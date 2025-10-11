@@ -32,6 +32,8 @@
 
   <ItemGroup>
     <Compile Include="Visitors\BatchVisitor.cs" />
+    <Compile Include="Visitors\DataTypes\PrecisionScaleVisitor.cs" />
+    <Compile Include="Visitors\DataTypes\DataTypeVisitor.cs" />
     <Compile Include="Visitors\Identifiers\FunctionNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IdentifierVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IndexNameVisitor.cs" />
@@ -50,6 +52,8 @@
     <Compile Include="Visitors\SqlVisitor.T.cs" />
     <Compile Include="Visitors\SqlVisitor.V.cs" />
     <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
+    <Compile Include="Visitors\Statements\CreateVisitor.cs" />
+    <Compile Include="Visitors\Statements\CreateSchemaVisitor.cs" />
     <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />
     <Compile Include="Visitors\Statements\DropIndexVisitor.cs" />
     <Compile Include="Visitors\Statements\DropSchemaVisitor.cs" />

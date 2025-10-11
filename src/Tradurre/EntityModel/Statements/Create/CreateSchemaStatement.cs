@@ -11,6 +11,7 @@ namespace Tradurre;
 /// Initializes a new instance of the <see cref="CreateSchemaStatement"/> class with the specified
 /// <see cref="Source"/>.
 /// </remarks>
+/// <seealso cref="https://duckdb.org/docs/stable/sql/statements/create_schema"/>
 public sealed class CreateSchemaStatement : CreateIfNotExistsStatement
 {
     /// <summary>
@@ -37,4 +38,9 @@ public sealed class CreateSchemaStatement : CreateIfNotExistsStatement
     /// Gets or sets the <see cref="SchemaName"/> for the statement.
     /// </summary>
     public SchemaName? Name { get; set; }
+
+    /// <summary>
+    /// A flag that indicates to replace the existing schema if it exists.
+    /// </summary>
+    public bool? OrReplace { get; set; }
 }

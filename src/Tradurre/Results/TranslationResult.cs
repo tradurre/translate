@@ -19,5 +19,5 @@ public sealed class TranslationResult
     /// <summary>
     /// Gets a collection of <see cref="FileResult"/> from the translation.
     /// </summary>
-    public List<FileResult> Files { get; } = [];
+    // TODO: public List<FileResult> Files { get; } = [];
 }

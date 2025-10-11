@@ -30,18 +30,16 @@ internal sealed class IdentifierVisitor : SqlVisitor<Identifier>
         Logger.NestStart();
         ArgumentNullException.ThrowIfNull(context, nameof(context));
 
-        Identifier identifier = new(context.Source());
+        Identifier identifier = new(
+            context.IDENTIFIER().GetText(),
+            context.Source());
 
-        if (context.IDENTIFIER() is not null)
-            identifier.Value = context.IDENTIFIER().GetText();
-        else if (context.DOUBLE_QUOTED_IDENTIFER() is not null)
+        if (context.DOUBLE_QUOTED_IDENTIFER() is not null)
         {
             identifier.IsQuoted = true;
             string value = context.IDENTIFIER().GetText();
             identifier.Value = value.Trim().TrimStart('"').TrimEnd('"');
         }
-        else
-            throw new NotImplementedException();
 
         Logger.NestEnd();
         return identifier;

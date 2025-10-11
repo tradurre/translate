@@ -33,6 +33,7 @@ internal sealed class StatementVisitor : SqlVisitor<ParseResult>
 
         return context.GetChild(0) switch
         {
+            CreateContext => Visit(Logger, context.create()),
             DropContext => Visit(Logger, context.drop()),
             OtherContext => Visit(Logger, context.other()),
 

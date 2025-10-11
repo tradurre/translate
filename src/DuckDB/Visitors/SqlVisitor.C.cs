@@ -23,4 +23,28 @@ internal partial class SqlVisitor<T>
         logger.TraceEntry();
         return new CascadeRestrictVisitor(logger).VisitCascade_restrict(context);
     }
+
+    /// <summary>
+    /// Visit the create_schema rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Create_schemaContext"/>.</param>
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, Create_schemaContext context)
+    {
+        logger.TraceEntry();
+        return new CreateSchemaVisitor(logger).VisitCreate_schema(context);
+    }
+
+    /// <summary>
+    /// Visit the create rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="CreateContext"/>.</param>
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, CreateContext context)
+    {
+        logger.TraceEntry();
+        return new CreateVisitor(logger).VisitCreate(context);
+    }
 }

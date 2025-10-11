@@ -10,25 +10,6 @@ namespace Tradurre;
 public class Identifier : Fragment
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Identifier"/> class with the specified value.
-    /// </summary>
-    /// <param name="value">The value of the object.</param>
-    public Identifier(string value)
-        : base()
-    {
-        Value = value;
-    }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Identifier"/> class with the specified <see cref="Source"/>.
-    /// </summary>
-    /// <param name="source">A <see cref="Source"/>.</param>
-    public Identifier(Source source)
-        : base(source)
-    {
-    }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="Identifier"/> class with the specified value and <see cref="Source"/>.
     /// </summary>
     /// <param name="value">The value of the object.</param>
@@ -47,5 +28,5 @@ public class Identifier : Fragment
     /// <summary>
     /// Gets or sets the value of the <see cref="Identifier"/>.
     /// </summary>
-    public string? Value { get; set; }
+    public string Value { get; set; }
 }

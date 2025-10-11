@@ -17,17 +17,12 @@ public sealed class WriteResult
     }
 
     /// <summary>
-    /// Gets any validation or writer errors from the operation.
+    /// A collection of writing messages.
     /// </summary>
-    public List<Error> Errors { get; } = [];
+    public List<Message> Messages { get; } = [];
 
     /// <summary>
     /// Gets a collection of <see cref="Statement"/> from the operation.
     /// </summary>
     public List<Statement> Statements { get; } = [];
-
-    /// <summary>
-    /// Gets any validation or writer warnings from the operation.
-    /// </summary>
-    public List<Warning> Warnings { get; } = [];
 }

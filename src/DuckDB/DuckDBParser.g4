@@ -6,19 +6,47 @@ batch : statement+ EOF;
 
 statement
     : //alter
-    //| create
     //|
-    drop
+    create
+    | drop
     | other
     //| security    
     ;
 
 create
     : create_index
+    | create_macro
+    | create_schema
+    | create_secret
+    | create_sequence
+    | create_table
     ;
 
-create_index : CREATE UNIQUE? INDEX if_not_exists? index_name ON table_name ;
+create_index : CREATE UNIQUE? INDEX if_not_exists? index_name ON table_name
+    // TODO: ( USING index_type )?
+    '(' column_name ( ',' column_name )* ')'
+    // TODO: '( WITH index_option ( ',' index_option )* )?
+    ;
+ create_macro : CREATE or_replace? temp_temporary? ( FUNCTION | MACRO ) macro_name 
+    // TODO: '(' parameter_name (':=' default_value )? ( ',' parameter_name (':=' default_value )? )* ')'
+    AS TABLE? // TODo: expression
+    ;
 create_schema : CREATE or_replace? SCHEMA if_not_exists? schema_name ;
+create_secret : CREATE or_replace? ( PERSISTENT | TEMPORARY ) SECRET if_not_exists? secret_name 
+    // TODO: ( IN storage_specifier )? ( TYPE secret_type ',' KEY_n VALUE_n ) ?
+    ;
+create_sequence : CREATE or_replace? temp_temporary? SEQUENCE sequence_name ( INCREMENT BY? increment=ID_DIGIT )? sequence_option*
+    ( START WITH? start_value=ID_DIGIT ( NO? CYCLE )? );
+
+create_table : CREATE or_replace? temp_temporary? TABLE if_not_exists? table_name
+    // columns
+    ( '(' column_definitions ')' )
+    // TODO: | ( AS select ( WITH NO DATA )? )
+    ;
+
+column_definition : ;
+column_definitions : column_definition ( ',' column_definition )* ;
+
 
 drop
     :
@@ -45,11 +73,72 @@ other
 
 statement_termination : ';' ;
 
+data_type
+    : ARRAY
+    | BIGINT
+    | BINARY
+    | BIT
+    | BITSTRING
+    | BLOB
+    | BOOL
+    | BOOLEAN
+    | BPCHAR
+    | BYTEA
+    | CHAR
+    | DATE
+    | DATETIME
+    | ( DECIMAL precision_scale? )
+    | DOUBLE
+    | FLOAT
+    | FLOAT4
+    | FLOAT8
+    | HUGEINT
+    | INT
+    | INT1
+    | INT2
+    | INT4
+    | INT8
+    | INTEGER
+    | INTERVAL
+    | JSON
+    | LIST
+    | LOGICAL
+    | LONG
+    | MAP
+    | ( NUMERIC precision_scale? )
+    | REAL
+    | SHORT
+    | SIGNED
+    | SMALLINT
+    | STRING
+    | STRUCT
+    | TEXT
+    | TIME
+    | TIMESTAMP
+    | ( TIMESTAMP WITH TIME ZONE )
+    | TIMESTAMPTZ
+    | TINYINT
+    | UBIGINT
+    | UHUGEINT
+    | UINTEGER
+    | UNION
+    | USMALLINT
+    | UTINYINT
+    | UUID
+    | VARBINARY
+    | VARCHAR   
+    ;
+
+precision_scale : precision=ID_DIGIT ( ',' scale=ID_DIGIT )? ;
+
+operators : ;
+
 cascade_restrict : CASCADE | RESTRICT ;
 if_exists : IF EXISTS ;
 if_not_exists : IF NOT EXISTS ;
 or_replace : OR REPLACE ;
-
+sequence_option : ( ( NO MAXVALUE ) | ( MAXVALUE max_value=ID_DIGIT ) ) | ( ( NO MINVALUE ) | ( MINVALUE min_value=ID_DIGIT ) ) ;
+temp_temporary : TEMP | TEMPORARY ;
 
 identifier
     : DOUBLE_QUOTED_IDENTIFER
@@ -57,10 +146,13 @@ identifier
     ;
 
 
-function_name : name=identifier; // todo: 
+column_name : name=identifier;
+function_name : name=identifier;
 index_name : name=identifier;
+macro_name : ( schema=identifier '.' )? name=identifier;
 schema_name : name=identifier;
-sequence_name : name=identifier; // todo: 
+secret_name : name=identifier;
+sequence_name : name=identifier;
 table_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
 type_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
 view_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
