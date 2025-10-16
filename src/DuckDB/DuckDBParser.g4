@@ -5,13 +5,22 @@ options { tokenVocab=DuckDBLexer; }
 batch : statement+ EOF;
 
 statement
-    : //alter
-    //|
-    create
+    : alter
+    | create
     | drop
     | other
     //| security    
     ;
+
+alter
+    : alter_database
+    | alter_table
+    | alter_view
+    ;
+
+alter_database : ALTER DATABASE if_exists? database_name RENAME TO database_name ;
+alter_table : ALTER TABLE table_name ; // TODO: 
+alter_view : ALTER VIEW view_name RENAME TO view_name ;
 
 create
     : create_index
@@ -20,6 +29,7 @@ create
     | create_secret
     | create_sequence
     | create_table
+    | create_type
     ;
 
 create_index : CREATE UNIQUE? INDEX if_not_exists? index_name ON table_name
@@ -42,6 +52,16 @@ create_table : CREATE or_replace? temp_temporary? TABLE if_not_exists? table_nam
     // columns
     ( '(' column_definitions ')' )
     // TODO: | ( AS select ( WITH NO DATA )? )
+    ;
+
+create_type : CREATE TYPE type_name AS 
+    (
+        data_type
+        | type_name
+        // TODO: | ( ENUM '(' expression ')' )
+        | STRUCT
+        | UNION 
+    )
     ;
 
 column_definition : ;
@@ -68,10 +88,28 @@ drop_type : DROP TYPE if_exists?  type_name cascade_restrict? ;
 drop_view : DROP VIEW if_exists? view_name cascade_restrict? ;
 
 other
-    : statement_termination
+    :  analyze
+    | attach
+    | call
+    | checkpoint
+    | comment_on
+    | copy
+    | detach
+    | statement_termination
+    | use
+    | vacuum
     ;
 
+analyze : ANALYZE ;
+attach : ATTACH or_replace? DATABASE? if_not_exists? ; // TODO:
+call : CALL function_name ; // TODO:
+checkpoint : FORCE? CHECKPOINT database_name ;
+comment_on : COMMENT ON  ( COLUMN | INDEX | ( MACRO TABLE? ) | SEQUENCE | TABLE | TYPE | VIEW) entity_name IS ( SINGLE_QUOTED_IDENTIFER | NULL );
+copy : COPY table_name ( '(' column_name ( ',' column_name )* ')' )? FROM file_name=SINGLE_QUOTED_IDENTIFER;
+detach : DETACH ( DATABASE if_exists? )? database_name ;
 statement_termination : ';' ;
+use: USE database_name ( '.' schema_name )? ;
+vacuum : VACUUM ANALYZE? ( table_name ( '(' column_name ( ',' column_name )* ')' )? )? ;
 
 data_type
     : ARRAY
@@ -147,6 +185,8 @@ identifier
 
 
 column_name : name=identifier;
+database_name : name=identifier;
+entity_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
 function_name : name=identifier;
 index_name : name=identifier;
 macro_name : ( schema=identifier '.' )? name=identifier;

@@ -12,6 +12,18 @@ namespace DuckDB.Visitors;
 internal partial class SqlVisitor<T>
 {
     /// <summary>
+    /// Visit the vacuum rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="VacuumContext"/>.</param>
+    /// <returns>A <see cref="ViewName"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, VacuumContext context)
+    {
+        logger.TraceEntry();
+        return new VacuumVisitor(logger).VisitVacuum(context);
+    }
+
+    /// <summary>
     /// Visit the view_name rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>

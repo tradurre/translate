@@ -3,8 +3,11 @@ lexer grammar DuckDBLexer;
 channels { comment, whitespace }
 options { caseInsensitive = true; }
 
+ALTER : 'ALTER';
+ANALYZE : 'ANALYZE';
 ARRAY : 'ARRAY' ;
 AS : 'AS';
+ATTACH : 'ATTACH';
 
 BIGINT : 'BIGINT' ;
 BINARY : 'BINARY' ;
@@ -17,23 +20,33 @@ BPCHAR : 'BPCHAR' ;
 BY : 'BY';
 BYTEA : 'BYTEA' ;
 
+CALL : 'CALL';
 CASCADE : 'CASCADE';
 CHAR : 'CHAR' ;
+CHECKPOINT : 'CHECKPOINT';
+COLUMN : 'COLUMN';
+COMMENT : 'COMMENT';
+COPY : 'COPY';
 CREATE : 'CREATE';
 CYCLE : 'CYCLE';
 
 DATA : 'DATA';
+DATABASE : 'DATABASE';
 DATE : 'DATE' ;
 DATETIME : 'DATETIME' ;
 DECIMAL : 'DECIMAL' ;
+DETACH : 'DETACH';
 DOUBLE : 'DOUBLE' ;
 DROP : 'DROP';
 
+ENUM : 'ENUM';
 EXISTS : 'EXISTS';
 
 FLOAT : 'FLOAT' ;
 FLOAT4 : 'FLOAT4' ;
 FLOAT8 : 'FLOAT8' ;
+FORCE : 'FORCE';
+FROM : 'FROM';
 FUNCTION : 'FUNCTION';
 
 HUGEINT : 'HUGEINT' ;
@@ -48,6 +61,7 @@ INT4 : 'INT4' ;
 INT8 : 'INT8' ;
 INTEGER : 'INTEGER' ;
 INTERVAL : 'INTERVAL' ;
+IS : 'IS';
 
 JSON : 'JSON' ;
 
@@ -62,6 +76,7 @@ MINVALUE : 'MINVALUE' ;
 
 NO : 'NO';
 NOT : 'NOT';
+NULL : 'NULL';
 NUMERIC : 'NUMERIC' ;
 
 ON : 'ON';
@@ -69,6 +84,7 @@ OR : 'OR';
 
 PERSISTENT : 'PERSISTENT';
 REAL : 'REAL' ;
+RENAME : 'RENAME';
 REPLACE : 'REPLACE';
 RESTRICT : 'RESTRICT';
 
@@ -91,6 +107,7 @@ TIMESTAMP : 'TIMESTAMP' ;
 TIMEZONE : 'TIMEZONE' ;
 TIMESTAMPTZ : 'TIMESTAMPTZ' ;
 TINYINT : 'TINYINT' ;
+TO : 'TO';
 TYPE : 'TYPE';
 
 UBIGINT : 'UBIGINT' ;
@@ -98,11 +115,13 @@ UHUGEINT : 'UHUGEINT' ;
 UINTEGER : 'UINTEGER' ;
 UNION : 'UNION' ;
 UNIQUE : 'UNIQUE';
+USE : 'USE';
 USING : 'USING';
 USMALLINT : 'USMALLINT' ;
 UTINYINT : 'UTINYINT' ;
 UUID : 'UUID' ;
 
+VACUUM : 'VACUUM';
 VARBINARY : 'VARBINARY' ;
 VARCHAR : 'VARCHAR' ;
 VIEW : 'VIEW';
@@ -145,6 +164,7 @@ COMMENT_MULTI_LINE : '/*' (.)*? '*/' -> channel(comment) ;
 COMMENT_SINGLE_LINE : '--' ~[\r\n]* -> channel(comment) ;
 
 DOUBLE_QUOTED_IDENTIFER : '"' ( '""' | ~'"' )* '"' ;
+SINGLE_QUOTED_IDENTIFER : '\'' ( '\'\'' | ~'\'' )* '\'';
 ID_DIGIT : '-'? F_DIGIT+ ;
 IDENTIFIER : ( [A-Z] | FULL_WIDTH_LETTER ) ( [A-Z_#$@0-9] | FULL_WIDTH_LETTER )* ;
 

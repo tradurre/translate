@@ -12,6 +12,18 @@ namespace DuckDB.Visitors;
 internal partial class SqlVisitor<T>
 {
     /// <summary>
+    /// Visit the database_name rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Database_nameContext"/>.</param>
+    /// <returns>A <see cref="DatabaseName"/>.</returns>
+    internal static DatabaseName Visit(ILogger logger, Database_nameContext context)
+    {
+        logger.TraceEntry();
+        return new DatabaseNameVisitor(logger).VisitDatabase_name(context);
+    }
+
+    /// <summary>
     /// Visit the drop_function rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>

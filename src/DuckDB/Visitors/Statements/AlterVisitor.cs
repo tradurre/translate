@@ -1,4 +1,4 @@
-// <copyright file="OtherVisitor.cs">
+﻿// <copyright file="AlterVisitor.cs">
 // All rights reserved.
 // </copyright>
 
@@ -9,22 +9,22 @@ using static DuckDB.DuckDBParser;
 namespace DuckDB.Visitors;
 
 /// <summary>
-/// Handles the other rule.
+/// Handles the alter rule.
 /// </summary>
-internal sealed class OtherVisitor : SqlVisitor<ParseResult>
+internal sealed class AlterVisitor : SqlVisitor<ParseResult>
 {
     /// <summary>
-    /// Initlaizes a new instance of the <see cref="OtherVisitor"/> class with the specified <see cref="ILogger"/>.
+    /// Initlaizes a new instance of the <see cref="AlterVisitor"/> class with the specified <see cref="ILogger"/>.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>
-    public OtherVisitor(ILogger logger)
+    public AlterVisitor(ILogger logger)
         : base(logger)
     {
         Logger.TraceEntry();
     }
 
     /// <inheritdoc/>
-    public override ParseResult VisitOther(OtherContext context)
+    public override ParseResult VisitAlter(AlterContext context)
     {
         Logger.TraceEntry();
         Logger.NestStart();
@@ -33,11 +33,9 @@ internal sealed class OtherVisitor : SqlVisitor<ParseResult>
 
         return context.GetChild(0) switch
         {
-            AnalyzeContext => Visit(Logger, context.analyze()),
-            Statement_terminationContext => Visit(Logger, context.statement_termination()),
-
-            UseContext => Visit(Logger, context.use()),
-            VacuumContext => Visit(Logger, context.vacuum()),
+            Alter_databaseContext => Visit(Logger, context.alter_database()),
+            //Alter_tableContext => Visit(Logger, context.Alter_tableContext()),
+            //Alter_viewContext => Visit(Logger, context.Alter_viewContext()),
 
             _ => throw new NotImplementedException()
         };

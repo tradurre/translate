@@ -25,6 +25,18 @@ internal partial class SqlVisitor<T>
     }
 
     /// <summary>
+    /// Visit the column_name rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Column_nameContext"/>.</param>
+    /// <returns>A <see cref="ColumnName"/>.</returns>
+    internal static ColumnName Visit(ILogger logger, Column_nameContext context)
+    {
+        logger.TraceEntry();
+        return new ColumnNameVisitor(logger).VisitColumn_name(context);
+    }
+
+    /// <summary>
     /// Visit the create_schema rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>

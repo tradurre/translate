@@ -34,14 +34,17 @@
     <Compile Include="Visitors\BatchVisitor.cs" />
     <Compile Include="Visitors\DataTypes\PrecisionScaleVisitor.cs" />
     <Compile Include="Visitors\DataTypes\DataTypeVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\DatabaseNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\FunctionNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IdentifierVisitor.cs" />
+    <Compile Include="Visitors\Identifiers\ColumnNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\IndexNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\SchemaNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\SequenceNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\TableNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\TypeNameVisitor.cs" />
     <Compile Include="Visitors\Identifiers\ViewNameVisitor.cs" />
+    <Compile Include="Visitors\SqlVisitor.A.cs" />
     <Compile Include="Visitors\SqlVisitor.C.cs" />
     <Compile Include="Visitors\SqlVisitor.cs" />
     <Compile Include="Visitors\SqlVisitor.D.cs" />
@@ -50,8 +53,12 @@
     <Compile Include="Visitors\SqlVisitor.O.cs" />
     <Compile Include="Visitors\SqlVisitor.S.cs" />
     <Compile Include="Visitors\SqlVisitor.T.cs" />
+    <Compile Include="Visitors\SqlVisitor.U.cs" />
     <Compile Include="Visitors\SqlVisitor.V.cs" />
+    <Compile Include="Visitors\Statements\AlterDatabaseVisitor.cs" />
+    <Compile Include="Visitors\Statements\AlterVisitor.cs" />
     <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
+    <Compile Include="Visitors\Statements\AnalyzeVisitor.cs" />
     <Compile Include="Visitors\Statements\CreateVisitor.cs" />
     <Compile Include="Visitors\Statements\CreateSchemaVisitor.cs" />
     <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />
@@ -63,6 +70,8 @@
     <Compile Include="Visitors\Statements\DropViewVisitor.cs" />
     <Compile Include="Visitors\Statements\DropVisitor.cs" />
     <Compile Include="Visitors\Statements\OtherVisitor.cs" />
+    <Compile Include="Visitors\Statements\UseVisitor.cs" />
+    <Compile Include="Visitors\Statements\VacuumVisitor.cs" />
     <Compile Include="Visitors\Statements\StatementTerminationVisitor.cs" />
     <Compile Include="Visitors\Statements\StatementVisitor.cs" />
   </ItemGroup>
