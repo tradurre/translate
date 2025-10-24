@@ -59,6 +59,7 @@
     <Compile Include="Visitors\Statements\AlterVisitor.cs" />
     <Compile Include="Visitors\Statements\CascadeRestrictVisitor.cs" />
     <Compile Include="Visitors\Statements\AnalyzeVisitor.cs" />
+    <Compile Include="Visitors\Statements\CreateTypeVisitor.cs" />
     <Compile Include="Visitors\Statements\CreateVisitor.cs" />
     <Compile Include="Visitors\Statements\CreateSchemaVisitor.cs" />
     <Compile Include="Visitors\Statements\DropFunctionVisitor.cs" />

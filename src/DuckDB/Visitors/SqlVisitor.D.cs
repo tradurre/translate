@@ -24,6 +24,18 @@ internal partial class SqlVisitor<T>
     }
 
     /// <summary>
+    /// Visit the data_type rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Data_typeContext"/>.</param>
+    /// <returns>A <see cref="DatabaseName"/>.</returns>
+    internal static DataType Visit(ILogger logger, Data_typeContext context)
+    {
+        logger.TraceEntry();
+        return new DataTypeVisitor(logger).VisitData_type(context);
+    }
+
+    /// <summary>
     /// Visit the drop_function rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>

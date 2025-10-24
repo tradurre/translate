@@ -49,6 +49,18 @@ internal partial class SqlVisitor<T>
     }
 
     /// <summary>
+    /// Visit the create_type rule.
+    /// </summary>
+    /// <param name="logger">An <see cref="ILogger"/>.</param>
+    /// <param name="context">The <see cref="Create_typeContext"/>.</param>
+    /// <returns>A <see cref="ParseResult"/>.</returns>
+    internal static ParseResult Visit(ILogger logger, Create_typeContext context)
+    {
+        logger.TraceEntry();
+        return new CreateTypeVisitor(logger).VisitCreate_type(context);
+    }
+
+    /// <summary>
     /// Visit the create rule.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger"/>.</param>

@@ -54,13 +54,13 @@ create_table : CREATE or_replace? temp_temporary? TABLE if_not_exists? table_nam
     // TODO: | ( AS select ( WITH NO DATA )? )
     ;
 
-create_type : CREATE TYPE type_name AS 
+create_type : CREATE TYPE name=type_name AS 
     (
-        data_type
+        dt=data_type
         | type_name
-        // TODO: | ( ENUM '(' expression ')' )
-        | STRUCT
-        | UNION 
+        | ( ENUM '(' expression ( ',' expression )* ')')
+        | ( STRUCT '(' field_name data_type ( ',' field_name data_type )* ')' )
+        | ( UNION '(' field_name data_type ( ',' field_name data_type )* ')' )
     )
     ;
 
@@ -112,18 +112,24 @@ use: USE database_name ( '.' schema_name )? ;
 vacuum : VACUUM ANALYZE? ( table_name ( '(' column_name ( ',' column_name )* ')' )? )? ;
 
 data_type
-    : ARRAY
-    | BIGINT
-    | BINARY
+    : 
+    BINARY
     | BIT
     | BITSTRING
     | BLOB
     | BOOL
     | BOOLEAN
-    | BPCHAR
     | BYTEA
-    | CHAR
     | DATE
+    // TODO: | ( ENUM '(' SINGLE_QUOTED_IDENTIFER ( ',' SINGLE_QUOTED_IDENTIFER )* ')' )
+    // TODO: | INTERVAL
+    | VARBINARY
+    
+    
+    /*ARRAY
+    | BIGINT
+    | ( BPCHAR precision_only? )    
+    | ( CHAR precision_only? )    
     | DATETIME
     | ( DECIMAL precision_scale? )
     | DOUBLE
@@ -136,8 +142,7 @@ data_type
     | INT2
     | INT4
     | INT8
-    | INTEGER
-    | INTERVAL
+    | INTEGER    
     | JSON
     | LIST
     | LOGICAL
@@ -148,9 +153,9 @@ data_type
     | SHORT
     | SIGNED
     | SMALLINT
-    | STRING
+    | ( STRING precision_only? )
     | STRUCT
-    | TEXT
+    | ( TEXT precision_only? )
     | TIME
     | TIMESTAMP
     | ( TIMESTAMP WITH TIME ZONE )
@@ -162,12 +167,16 @@ data_type
     | UNION
     | USMALLINT
     | UTINYINT
-    | UUID
-    | VARBINARY
-    | VARCHAR   
+    | UUID    
+    | ( VARCHAR precision_only? )*/
     ;
 
-precision_scale : precision=ID_DIGIT ( ',' scale=ID_DIGIT )? ;
+precision_only : '(' precision=ID_DIGIT  ')' ;
+precision_scale : '(' precision=ID_DIGIT ( ',' scale=ID_DIGIT )? ')';
+
+expression :
+    SINGLE_QUOTED_IDENTIFER
+    ;
 
 operators : ;
 
@@ -187,6 +196,7 @@ identifier
 column_name : name=identifier;
 database_name : name=identifier;
 entity_name : ( ( catalog=identifier '.' )? schema=identifier '.' )? name=identifier;
+field_name : name=identifier;
 function_name : name=identifier;
 index_name : name=identifier;
 macro_name : ( schema=identifier '.' )? name=identifier;

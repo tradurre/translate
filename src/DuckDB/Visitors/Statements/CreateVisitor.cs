@@ -39,6 +39,7 @@ internal sealed class CreateVisitor : SqlVisitor<ParseResult>
             //Create_secretContext => Visit(Logger, context.create_secret()),
             //Create_sequenceContext => Visit(Logger, context.create_sequence()),
             //Create_tableContext => Visit(Logger, context.create_table()),
+            Create_typeContext => Visit(Logger, context.create_type()),
 
             _ => throw new NotImplementedException()
         };

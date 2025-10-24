@@ -15,14 +15,6 @@ namespace Tradurre;
 public sealed class JsonDataType : DataType
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="JsonDataType"/> class.
-    /// </summary>
-    public JsonDataType()
-        : base()
-    {
-    }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="JsonDataType"/> class with the specified <see cref="Source"/>.
     /// </summary>
     /// <param name="source">A <see cref="Source"/>.</param>
