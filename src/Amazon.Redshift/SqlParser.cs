@@ -1,39 +1,32 @@
-﻿// <copyright file="DuckDBSqlParser.cs">
-// All rights reserved.
-// </copyright>
+﻿
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Atn;
-//using DuckDB.Visitors;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Tradurre;
 
-namespace DuckDB;
+namespace Amazon.Redshift;
 
-/// <summary>
-/// The <see cref="IParser"/> implementation for DuckDB.
-/// </summary>
-public class DuckDBSqlParser : IParser
+public class SqlParser : IParser
 {
-    private readonly ILogger<DuckDBSqlParser> _logger;
+    private readonly ILogger<SqlParser> _logger;
     private readonly IServiceProvider _provider;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DuckDBSqlParser"/> with the specified <see cref="ILogger{TCategoryName}"/>.
+    /// Initializes a new instance of the <see cref="SqlParser"/> with the specified <see cref="ILogger{TCategoryName}"/>.
     /// </summary>
     /// <param name="logger">An <see cref="ILogger{TCategoryName}"/>.</param>
     /// <param name="provider">An <see cref="IServiceProvider"/> for additional services.</param>
-    public DuckDBSqlParser(ILogger<DuckDBSqlParser> logger, IServiceProvider provider)
-        : base()
+    public SqlParser(ILogger<SqlParser> logger, IServiceProvider provider)
     {
         _logger = logger;
         _provider = provider;
 
         _logger.TraceEntry();
+
     }
 
-    /// <inheritdoc/>
     public ParseResult Parse(string statement)
     {
         _logger.TraceEntry();
@@ -42,16 +35,18 @@ public class DuckDBSqlParser : IParser
 
         try
         {
+
             AntlrInputStream stream = new(statement);
-            DuckDBLexer lexer = new(stream);
+            RedshiftLexer lexer = new(stream);
             CommonTokenStream tokens = new(lexer);
-            DuckDBParser parser = new(tokens);
+            RedshiftParser parser = new(tokens);
 
             parser.Interpreter.PredictionMode = PredictionMode.LL;
 
 #if DEBUG
             parser.Interpreter.PredictionMode = PredictionMode.LL_EXACT_AMBIG_DETECTION;
 #endif
+
             var int_listeners = _provider.GetServices<IAntlrErrorListener<int>>();
 
             if (int_listeners != null
@@ -66,13 +61,8 @@ public class DuckDBSqlParser : IParser
             }
 
             // Visit
-            return result;
+            parser.batch();
             //BatchVisitor visitor = new(_logger);
-            //var results = visitor.VisitBatch(parser.batch());
-            //foreach (var s1 in statements)
-              //  result.Statements.Add(s1);
-
-            //result.Statements.AddRange(results);
         }
         catch (Exception ex)
         {

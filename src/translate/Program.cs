@@ -3,8 +3,9 @@
 // </copyright>
 
 using CliFx;
+using CliFx.Attributes;
+using CliFx.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.SqlServer;
 using Serilog;
 using Tradurre.Commands;
 using Tradurre.Themes;
@@ -41,6 +42,7 @@ public static class Program
                     builder.AddSerilog(log_config);
                 })
 
+
                 // Commands
                 .AddSingleton<ParseCommand>()
                 .AddSingleton<TranslateCommand>()
@@ -48,13 +50,10 @@ public static class Program
                 .AddSingleton<ITranslator, Translator>()
 
                 // Parser Extensions
-                .AddKeyedSingleton<IParser, DuckDB.DuckDBSqlParser>(SourceType.DuckDB)
-                //.AddKeyedSingleton<IParser, SqlServerParser>(SourceType.MicrosoftSqlServer)
-                //.AddKeyedSingleton<IParser, PostgreSql.PostgreSqlParser>(SourceType.PostgreSQL)
+                .AddKeyedSingleton<IParser, Amazon.Redshift.SqlParser>(SourceType.AmazonRedshift)
 
                 // Writer Extensions
-                .AddKeyedSingleton<IWriter, SqlServerWriter>(TargetType.MicrosoftSqlServer)
-                //.AddKeyedSingleton<IWriter, PostgreSql.PostgreSqlWriter>(TargetType.PostgreSQL)
+                .AddKeyedSingleton<IWriter, Microsoft.SqlServer.SqlServerWriter>(TargetType.MicrosoftSqlServer)
 
                 .BuildServiceProvider();
 

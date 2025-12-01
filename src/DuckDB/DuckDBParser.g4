@@ -123,6 +123,7 @@ data_type
     | DATE
     // TODO: | ( ENUM '(' SINGLE_QUOTED_IDENTIFER ( ',' SINGLE_QUOTED_IDENTIFER )* ')' )
     // TODO: | INTERVAL
+    | ( '[' ']' )
     | VARBINARY
     
     

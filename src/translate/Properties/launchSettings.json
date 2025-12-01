@@ -2,7 +2,7 @@
   "profiles": {
     "translate": {
       "commandName": "Project",
-      "commandLineArgs": "translate -s DuckDB -t MicrosoftSqlServer -i D:\\Sql\\DuckDB\\ -o D:\\output"
+      "commandLineArgs": "translate -s AmazonRedshift -t MicrosoftSqlServer -i D:\\Sql\\Amazon\\Redshift\\ -o D:\\output"
     }
   }
 }

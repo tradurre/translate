@@ -10,6 +10,11 @@ namespace Tradurre;
 public enum SourceType
 {
     /// <summary>
+    /// Represents Amazon Redshift.
+    /// </summary>
+    AmazonRedshift,
+
+    /// <summary>
     /// Represents DuckDB.
     /// </summary>
     DuckDB,
